@@ -61,7 +61,7 @@ Return the modified array.
 
 const removeOne = (num, arr) => {
   // Solution code here...
-  if((num % 3) === 2) {
+  if(num % 3 === 2) {
     arr.pop();
   }
   return arr;
@@ -99,8 +99,8 @@ This anonymous function should accept up to three arguments: the element, the in
 
 const removeWithAnon = (arr) => {
   // Solution code here...
-  arr.forEach((element, index, arr) => {
-    arr.slice(element, 1);
+  arr.forEach((element, index, arr) =>{
+    if(element % 3 === 2) arr.slice(index, 1);
     return arr;
   });
   return arr;
@@ -127,7 +127,7 @@ const createList = (availableItems) => {
   const finalList = [];
   // Solution code here...
   availableItems.forEach((element) => {
-    if(element.available){
+    if(element.available){ //if available is true
       finalList.push(element.name);
     }
   });
@@ -150,6 +150,19 @@ Return the resulting output array.
 
 const fizzbuzz = (arr) => {
   // Solution code here...
+  const output = [];
+  arr.forEach(element => {
+    if(element % 3 === 0 && element % 5 === 0) {
+      output.push('Fizz Buzz');
+    } else if (element % 3 === 0) {
+      output.push('Fizz');
+    } else if (element % 5 === 0) {
+      output.push('Buzz');
+    } else {
+      output.push(element);
+    }
+  });
+  return output;
 };
 
 /* ------------------------------------------------------------------------------------------------
