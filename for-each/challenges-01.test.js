@@ -83,6 +83,8 @@ Write a function named removeWithForEach that produces the same output as challe
 
 const removeWithForEach = (arr, callback) => {
   // Solution code here...
+  arr.forEach((element) => callback(element, arr));
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -97,6 +99,11 @@ This anonymous function should accept up to three arguments: the element, the in
 
 const removeWithAnon = (arr) => {
   // Solution code here...
+  arr.forEach((element, index, arr) => {
+    arr.slice(element, 1);
+    return arr;
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
