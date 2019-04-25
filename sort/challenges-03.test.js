@@ -187,7 +187,7 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 const sortSchedule = (arr) => {
   // Solution code here...
   arr.sort((a, b) => {
-    weekdays.indexOf(a.dayOfWeek) - weekdays.indexOf(b.dayOfWeek) || Number(a.start) - Number(b.start) || (Math.abs(Number(a.end) - Number(a.start)) - Math.abs(Number(b.end) - Number(b.start))); //this should theoretically work, why doesn't it?
+    return weekdays.indexOf(a.dayOfWeek) - weekdays.indexOf(b.dayOfWeek) || a.start - b.start || (a.end - a.start) - (b.end - b.start);
   });
   return arr;
 };
