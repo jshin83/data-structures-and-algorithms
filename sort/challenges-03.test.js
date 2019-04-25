@@ -171,8 +171,7 @@ const meetings = [
 const sortMeetingsByDay = (arr) => {
   // Solution code here...
   const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-  arr.sort((a, b) => weekdays.indexOf(a.dayOfWeek) > weekdays.indexOf(b.dayOfWeek)); //why doesn't this work???
-  return arr;
+  return arr.sort((a, b) => weekdays.indexOf(a.dayOfWeek) - weekdays.indexOf(b.dayOfWeek));
 };
 
 /* ------------------------------------------------------------------------------------------------
