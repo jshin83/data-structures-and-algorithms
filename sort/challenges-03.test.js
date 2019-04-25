@@ -34,6 +34,7 @@ Write a function named sortByLength that takes in an array of strings and return
 
 const sortByLength = (arr) => {
   // Solution code here...
+  return arr.sort((a, b) => a.length - b.length);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,6 +47,15 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 
 const alphabetizeBetter = (arr) => {
   // Solution code here...
+  return arr.sort((a, b) => {
+    if(a.toLowerCase() < b.toLowerCase()) {
+      return -1;
+    } else if (a.toLowerCase() === b.toLowerCase()) {
+      return 0;
+    } else {
+      return 1;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -63,6 +73,7 @@ Here is an example of the input:
 
 const sortByPrice = (arr) => {
   // Solution code here...
+  return arr.sort((a, b) => a.price - b.price);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -75,6 +86,15 @@ For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 
 const sortNumbersByLength = (arr) => {
   // Solution code here...
+  return arr.sort((a, b) => {
+    if(a.toString().length < b.toString().length) {
+      return -1;
+    } else if (a.toString().length === b.toString().length) {
+      return 0;
+    } else {
+      return 1;
+    }
+  });
 };
 
 /*-----------------------------------------------------------------------------------------------
@@ -97,6 +117,15 @@ const people = [
 
 const sortPeople = (arr) => {
   // Solution code here...
+  return arr.sort((a, b) => {
+    if(a.lastName < b.lastName) {
+      return -1;
+    } else if (a.lastName === b.lastName) {
+      return 0;
+    } else {
+      return 1;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -109,8 +138,12 @@ If two people share the same last name, alphabetize on their first name.
 If two people have the same full name, the younger one should come first. Do not worry about capitalization.
 ------------------------------------------------------------------------------------------------ */
 
+/*https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare*/
 const sortPeopleBetter = (arr) => {
   // Solution code here...
+  return arr.sort((a, b) => {
+    return a.lastName.localeCompare(b.lastName) || a.firstName.localeCompare(b.firstName) || a.age - b.age;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -137,6 +170,9 @@ const meetings = [
 
 const sortMeetingsByDay = (arr) => {
   // Solution code here...
+  const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  arr.sort((a, b) => weekdays.indexOf(a.dayOfWeek) > weekdays.indexOf(b.dayOfWeek)); //why doesn't this work???
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
