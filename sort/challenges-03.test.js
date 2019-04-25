@@ -167,12 +167,11 @@ const meetings = [
   new Meeting('Monday', '0900', '0945'),
   new Meeting('Friday', '1200', '1345'),
 ];
+const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']; //moved out of function to use in 10
 
 const sortMeetingsByDay = (arr) => {
   // Solution code here...
-  const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-  arr.sort((a, b) => weekdays.indexOf(a.dayOfWeek) > weekdays.indexOf(b.dayOfWeek)); //why doesn't this work???
-  return arr;
+  return arr.sort((a, b) => weekdays.indexOf(a.dayOfWeek) - weekdays.indexOf(b.dayOfWeek));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -187,6 +186,10 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 
 const sortSchedule = (arr) => {
   // Solution code here...
+  arr.sort((a, b) => {
+    weekdays.indexOf(a.dayOfWeek) - weekdays.indexOf(b.dayOfWeek) || Number(a.start) - Number(b.start) || (Math.abs(Number(a.end) - Number(a.start)) - Math.abs(Number(b.end) - Number(b.start))); //this should theoretically work, why doesn't it?
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
