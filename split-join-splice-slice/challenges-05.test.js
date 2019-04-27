@@ -30,7 +30,7 @@ Write a function name wordsToCharList that, given a string as input, returns a n
 For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 ------------------------------------------------------------------------------------------------ */
 
-const wordsToCharList = (word) => {
+const wordsToCharList = (word) => { //don't like arr as name of param so changed it here
   // Solution code here...
   return word.split('');
 };
@@ -78,9 +78,18 @@ const gruffaloCrumble = {
 
 
 const listFoods = (recipe) => {
-  let result = [];
+  let foodItems = [];
+  const ingredients = recipe.ingredients;
+  console.log(ingredients);
   // Solution code here...
-  return result;
+  for (let i = 0; i < ingredients.length; i++) {
+    /*console.log('ingredient', ingredients[i]);
+    console.log(ingredients[i].lastIndexOf(' '));
+    console.log(ingredients[i].slice());*/
+    foodItems.push(ingredients[i].slice(ingredients[i].lastIndexOf(' ')));
+  }
+  console.log('food items:', foodItems);
+  return foodItems;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -92,8 +101,9 @@ You may also use other string or array methods.
 ------------------------------------------------------------------------------------------------ */
 
 const splitFoods = (recipe) => {
-  let result = [];
+  let result = recipe.ingredients.split();
   // Solution code here...
+  console.log(result);
   return result;
 };
 
@@ -110,6 +120,9 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 const stepActions = (recipe) => {
   let result = [];
   // Solution code here...
+  recipe.steps.forEach(step => {
+    result.push(step.slice(step[0], step.indexOf(' ')));
+  });
   return result;
 };
 
@@ -128,6 +141,19 @@ For example:
 
 const removeEvenValues = (arr) => {
   // Solution code here...
+  arr.forEach(element => {
+    console.log(element);
+    if(element % 2 === 0) {
+      arr.splice(arr.indexOf(element), 1);
+    }
+  });
+  for (let i = 0; i < arr.length; i++) {
+    if(arr[i] % 2 === 0) {
+      arr.splice(arr[i], 1);
+    }
+  }*/
+  console.log(arr);
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
