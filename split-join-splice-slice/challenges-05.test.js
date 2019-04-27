@@ -141,6 +141,15 @@ For example:
 
 const removeEvenValues = (arr) => {
   // Solution code here...
+  for(var i = 0; i < arr.length; i++){
+    if(arr[i] % 2 === 0) {
+      arr.splice(i--, 1);
+    }
+  }
+  console.log(arr);
+  return arr;
+};
+/*
   arr.forEach(element => {
     console.log('SPACE?' + element);
     if(element % 2 === 0) {
@@ -150,9 +159,8 @@ const removeEvenValues = (arr) => {
   /*
 Why does the for each skip element '66'?
   }*/
-  console.log(arr);
-  return arr;
-};
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7
