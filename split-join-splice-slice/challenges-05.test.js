@@ -142,15 +142,13 @@ For example:
 const removeEvenValues = (arr) => {
   // Solution code here...
   arr.forEach(element => {
-    console.log(element);
+    console.log('SPACE?' + element);
     if(element % 2 === 0) {
       arr.splice(arr.indexOf(element), 1);
     }
   });
-  for (let i = 0; i < arr.length; i++) {
-    if(arr[i] % 2 === 0) {
-      arr.splice(arr[i], 1);
-    }
+  /*
+Why does the for each skip element '66'?
   }*/
   console.log(arr);
   return arr;
@@ -173,6 +171,13 @@ removeLastCharacters('Gregor', 9) returns ''
 
 const removeLastCharacters = (str, numberOfCharacters) => {
   // Solution code here...
+  if(numberOfCharacters > str.length) {
+    return '';
+  }
+  if (numberOfCharacters < 0) {
+    return str;
+  }
+  return str.slice(0, str.length - numberOfCharacters);
 };
 
 
