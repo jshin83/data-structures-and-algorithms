@@ -80,15 +80,10 @@ const gruffaloCrumble = {
 const listFoods = (recipe) => {
   let foodItems = [];
   const ingredients = recipe.ingredients;
-  console.log(ingredients);
-  // Solution code here...
   for (let i = 0; i < ingredients.length; i++) {
-    /*console.log('ingredient', ingredients[i]);
-    console.log(ingredients[i].lastIndexOf(' '));
-    console.log(ingredients[i].slice());*/
-    foodItems.push(ingredients[i].slice(ingredients[i].substring(ingredients[i].indexOf(' ')) + 1), 1);
+    let food = ingredients[i].slice(ingredients[i].indexOf(' ', ingredients[i].indexOf(' ') + 1));
+    foodItems.push(food.trim());
   }
-  console.log('food items:', foodItems);
   return foodItems;
 };
 
@@ -109,8 +104,6 @@ const splitFoods = (recipe) => {
     let food = splitArr.join(' ');
     result.push(food);
   }
-  // Solution code here...
-  console.log(result);
   return result;
 };
 
@@ -153,7 +146,6 @@ const removeEvenValues = (arr) => {
       arr.splice(i--, 1); //noticed that the next element is skipped if there is element removed, so need to decrement index
     }
   }
-  console.log(arr);
   return arr;
 };
 
