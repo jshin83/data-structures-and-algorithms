@@ -86,7 +86,7 @@ const listFoods = (recipe) => {
     /*console.log('ingredient', ingredients[i]);
     console.log(ingredients[i].lastIndexOf(' '));
     console.log(ingredients[i].slice());*/
-    foodItems.push(ingredients[i].slice(ingredients[i].lastIndexOf(' ')));
+    foodItems.push(ingredients[i].slice(ingredients[i].substring(ingredients[i].indexOf(' ')) + 1), 1);
   }
   console.log('food items:', foodItems);
   return foodItems;
@@ -101,7 +101,14 @@ You may also use other string or array methods.
 ------------------------------------------------------------------------------------------------ */
 
 const splitFoods = (recipe) => {
-  let result = recipe.ingredients.split();
+  let result = [];
+  const ingredients = recipe.ingredients;
+  for(let i = 0; i < ingredients.length; i++) {
+    let splitArr = ingredients[i].split(' ');
+    splitArr.splice(0, 2);
+    let food = splitArr.join(' ');
+    result.push(food);
+  }
   // Solution code here...
   console.log(result);
   return result;
@@ -143,24 +150,12 @@ const removeEvenValues = (arr) => {
   // Solution code here...
   for(var i = 0; i < arr.length; i++){
     if(arr[i] % 2 === 0) {
-      arr.splice(i--, 1);
+      arr.splice(i--, 1); //noticed that the next element is skipped if there is element removed, so need to decrement index
     }
   }
   console.log(arr);
   return arr;
 };
-/*
-  arr.forEach(element => {
-    console.log('SPACE?' + element);
-    if(element % 2 === 0) {
-      arr.splice(arr.indexOf(element), 1);
-    }
-  });
-  /*
-Why does the for each skip element '66'?
-  }*/
-
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7
