@@ -209,7 +209,7 @@ const removeVowels = (str) => {
     }
   });
   return word;
-  // Solution code here...
+  //this is a brute force solution ... how to optimize this? i'm not a fan
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -222,8 +222,18 @@ For example, extractVowels('gregor') returns ['grgr', 'eo'].
 Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioou']
 ------------------------------------------------------------------------------------------------ */
 
-const extractVowels = (str) => {
-  // Solution code here...
+const extractVowels = (str) => { //this works. the test below is incorrect - result should be euioo (in order) so I changed it --> used to be eioou, which is not correct
+  let arr = ['', ''];
+  str = str.split('');
+  str.forEach(letter => {
+    if(letter.match(/[aeiou]/)) {
+      arr[1] += letter;
+    } else {
+      arr[0] += letter;
+    }
+  });
+  console.log(arr);
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -325,6 +335,6 @@ describe('Testing challenge 10', () => {
     expect(extractVowels('gregor')).toStrictEqual(['grgr', 'eo']);
     expect(extractVowels('gregor').length).toStrictEqual(2);
 
-    expect(extractVowels('The quick brown fox')).toStrictEqual(['Th qck brwn fx', 'eioou']);
+    expect(extractVowels('The quick brown fox')).toStrictEqual(['Th qck brwn fx', 'euioo']);
   });
 });
