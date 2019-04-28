@@ -183,9 +183,15 @@ Write a function named totalSumCSV that, given a string of comma-separated value
 ------------------------------------------------------------------------------------------------ */
 
 const totalSumCSV = (str) => {
-  let total = 0;
+  let total = str.split(',').map(Number);
+  //console.log('reduce: ', total.reduce()); //why doesn't reduce() work here?
+  let sum = 0;
+  total.forEach(element => sum += element);
+  return sum;
+  //console.log(result);
+  //total = Number(total);
   // Solution code here...
-  return total;
+  //return total;
 };
 
 
