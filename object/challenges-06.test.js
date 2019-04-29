@@ -148,6 +148,15 @@ For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ..
 const houseSize = (arr) => {
   const sizes = [];
   // Solution code here...
+  Object.values(arr).forEach(element => {
+    let size = 1;
+    let houseObject = {};
+    if(element.spouse) size++;
+    size += element.children.length;
+    houseObject.house = element.house;
+    houseObject.members = size;
+    sizes.push(houseObject);
+  });
   return sizes;
 };
 
