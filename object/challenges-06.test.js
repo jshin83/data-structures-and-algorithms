@@ -108,7 +108,14 @@ The input and output of this function are the same as the input and output from 
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenEntries = (arr, character) => {
-  // Solution code here...
+  const elements = Object.entries(arr);
+  let response = false;
+  for (let i = 0; i < elements.length; i++) {
+    if(elements[i][1].name === character && elements[i][1].children.length > 0) {
+      response = true;
+    }
+  }
+  return response;
 };
 
 /* ------------------------------------------------------------------------------------------------
