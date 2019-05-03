@@ -254,6 +254,12 @@ Write a function named extractChildren that, given the array of characters from 
 
 const extractChildren = (arr) => {
   // Solution code here...
+  return arr.filter( element => element.name.match(/a/)).reduce( ( acc, current ) => {
+    if(current.children) {
+      current.children.forEach( child => acc.push(child));
+    }
+    return acc;
+  }, [] );
 };
 
 /* ------------------------------------------------------------------------------------------------
