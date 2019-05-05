@@ -133,25 +133,19 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
-  // Solution code here...
-  let shortest = {
-    name: '',
-    height: 999
-  };
-  // return data.filter( character => Number(character.height) < shortest ? shortest = character.height : shortest).map( element => );
-  data.filter( character => Number(character.height) < shortest.height ? shortest = { name: `${character.name}`, height: Number(character.height) } : shortest);
-  console.log(shortest);
-  return shortest.name;
-  // let result = data.reduce( (acc, currentValue) => {
-  //   if(Number(currentValue.height) < Number(acc.height)) {
-  //     acc.height = currentValue.height;
-  //     acc.name = currentValue.name;
-  //     return acc;
-  //   } else {
-  //     return acc;
-  //   }
-  // }, { 'name': '', 'height': 999 });
-  // return result.name;
+  // Solution code here... two options - filter or reduce
+  // let shortest = {
+  //   name: '',
+  //   height: 999
+  // };
+  // data.filter( character => Number(character.height) < shortest.height ? shortest = { name: `${character.name}`, height: Number(character.height) } : shortest);
+  // console.log(shortest);
+  // return shortest.name;
+
+  let result = data.reduce ( (minObject, character)=> {
+    return Number(character.height) < minObject.height ? minObject = { name: `${character.name}`, height: Number(character.height) } : minObject;
+  }, { name: '', height: 999 });
+  return result.name;
 };
 
 /* ------------------------------------------------------------------------------------------------
