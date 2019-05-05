@@ -54,9 +54,6 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
-  // return input.map( arr => {
-  //   return arr.filter( element => (typeof (element) === 'number' && (element % 5) === 0) ).map( element => Math.pow(2, element));
-  // });
   return input.map( array => {
     return array.filter( value => typeof(value) === 'number' && (value % 5) === 0).map( element => Math.pow(2, element));
   });
@@ -137,12 +134,16 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 
 let findShortest = (data) => {
   // Solution code here...
-
-  // return data.filter( character => character.height < shortest ? shortest = character.height : shortest).map( element => );
-  // data.filter( character => character.height < shortest ? shortest = character.height : shortest);
-  // return shortest;
+  let shortest = {
+    name: '',
+    height: 999
+  };
+  // return data.filter( character => Number(character.height) < shortest ? shortest = character.height : shortest).map( element => );
+  data.filter( character => Number(character.height) < shortest.height ? shortest = { name: `${character.name}`, height: Number(character.height) } : shortest);
+  console.log(shortest);
+  return shortest.name;
   // let result = data.reduce( (acc, currentValue) => {
-  //   if(currentValue.height < acc.height) {
+  //   if(Number(currentValue.height) < Number(acc.height)) {
   //     acc.height = currentValue.height;
   //     acc.name = currentValue.name;
   //     return acc;
