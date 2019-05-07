@@ -150,14 +150,11 @@ const averageDailyTemperature = (weather) => {
   let sum = 0;
   for (let i = 0; i < weather.length; i++) {
     for (let j = 0; j < weather[i].length; j++) {
-      console.log(weather[i][j]);
       sum+=weather[i][j];
       totalElementCount+=1;
     }
   }
-  console.log(totalElementCount);
   return sum/totalElementCount;
-  // Solution code here...
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -178,7 +175,16 @@ let lowestWeeklyTemperatureData = [
 ];
 
 const lowestWeeklyAverage = (weather) => {
-  // Solution code here...
+  let lowestAve = 9999;
+  let sum = 0;
+  for (let i = 0; i < weather.length; i++) {
+    for (let j = 0; j < weather[i].length; j++) {
+      sum += weather[i][j];
+    }
+    if(sum/weather[i].length < lowestAve) lowestAve = sum/weather[i].length;
+    sum = 0;
+  }
+  return lowestAve;
 };
 
 /* ------------------------------------------------------------------------------------------------
