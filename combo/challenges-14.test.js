@@ -86,8 +86,7 @@ let starWarsData = [{
 
 let biggerThanLuke = (arr) => {
   // Solution code here...
-  let luke = arr.filter( person => person.name.includes('Luke Skywalker'));
-  console.log(luke);
+  let luke = arr.filter( person => person.name.includes('Luke Skywalker')); //assumption that we don't know luke's mass and have to search for it
   const results = arr.reduce( (bigger, current) => {
     if(current.mass > Number(luke[0].mass)) bigger.push(current.name);
     return bigger;
@@ -111,6 +110,15 @@ This data could be sorted by name or price.
 
 const sortBy = (property, arr) => {
   // Solution code here...
+  return arr.sort( (a, b) => {
+    if( a[property] < b[property] ){
+      return -1;
+    } else if( a[property] === b[property] ){
+      return 0;
+    } else {
+      return 1;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -127,6 +135,7 @@ https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
 // Solution code here...
+  /^(https:)\/\/(\w)+\.(com)|(org)$/.test(url);
 };
 
 /* ------------------------------------------------------------------------------------------------
