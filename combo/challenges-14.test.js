@@ -86,6 +86,13 @@ let starWarsData = [{
 
 let biggerThanLuke = (arr) => {
   // Solution code here...
+  let luke = arr.filter( person => person.name.includes('Luke Skywalker'));
+  console.log(luke);
+  const results = arr.reduce( (bigger, current) => {
+    if(current.mass > Number(luke[0].mass)) bigger.push(current.name);
+    return bigger;
+  }, []);
+  return results.join(' - ');
 };
 
 /* ------------------------------------------------------------------------------------------------
