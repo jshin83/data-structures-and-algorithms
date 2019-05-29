@@ -11,7 +11,18 @@ equals the middle. The middle is determined by a conditional statement
 that checks to see the input array length is odd or even.
 Time complexity of is O(N) as the original array must be iterated
 one time.
-Space complexity is O(N), as a new array of N + 1, is used.
+Space complexity is O(N), as an additional array of N + 1, is used.
+
+There is another approach that results in cleaner code, but space and time
+complexity are the same. Instead of having a check for a one element input array,
+in the for loop, there could be three conditionals.
+1. if i < middleIndex, result[i] == input[i]
+2. else if i equals middle index, result[i] == elementToEnter
+3. else result[i] == input[i - 1] ---> we know the array shifted after
+additional element, so we have to account for that.
+
+While I like the aforementioned approach, as it may result in cleaner, more readable
+code, I decided to keep my original implementation.
 
 ## Solution
 [Code](./src/main/java/Library.java)
