@@ -19,7 +19,7 @@ public class Library {
     public int[] insertShiftArray(int[] inputArr, int valueToBeAdded) {
 
         if(inputArr.length == 0) {
-            return inputArr;
+            return new int[]{valueToBeAdded};
         }
 
         int[] returnArr = new int[inputArr.length + 1];

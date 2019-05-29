@@ -32,8 +32,9 @@ public class LibraryTest {
     }
     @Test public void zeroElArr() {
         int[] zeroElArr = new int[] {};
+        int[] oneElArr = new int[] {15};
         Library classUnderTest = new Library();
-        assertArrayEquals("someLibraryMethod should return empty array", zeroElArr,
+        assertArrayEquals("someLibraryMethod should return empty array", oneElArr,
                 classUnderTest.insertShiftArray(zeroElArr, 15));
     }
 }

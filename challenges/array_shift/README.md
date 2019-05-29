@@ -14,5 +14,6 @@ one time.
 Space complexity is O(N), as a new array of N + 1, is used.
 
 ## Solution
-<!-- Embedded whiteboard image -->
-![whiteboard image](../assets/filename.jpg)
+[Code](./src/main/java/Library.java)
+
+![whiteboard image](../assets/challenge2.jpg)
