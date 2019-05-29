@@ -14,8 +14,9 @@ one time.
 Space complexity is O(N), as an additional array of N + 1, is used.
 
 There is another approach that results in cleaner code, but space and time
-complexity are the same. Instead of having a check for a one element input array,
-in the for loop, there could be three conditionals.
+complexity are the same. Instead of having a check for a one-element input 
+array edge case, I could put all my logic in the for loop.
+In the for loop, there could be three conditionals.
 1. if i < middleIndex, result[i] == input[i]
 2. else if i equals middle index, result[i] == elementToEnter
 3. else result[i] == input[i - 1] ---> we know the array shifted after
