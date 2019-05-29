@@ -5,3 +5,4 @@
 **401 code challenge links**
 1. [Array Reverse](./challenges/ArrayReverse.java)
 2. [Array Shift](./challenges/array_shift)
+3. [Binary Search](./challenges/arr_binary_search)
