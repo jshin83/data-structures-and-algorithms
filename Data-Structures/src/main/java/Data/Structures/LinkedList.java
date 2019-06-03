@@ -68,7 +68,7 @@ public class LinkedList {
      * Takes in no arguments
      * and returns a collection
      * of the current Node values in the Linked List.
-     * @return
+     * @return list of all values in linked list
      */
      List<Object> print() {
         List<Object> nodeList = new ArrayList<>();

@@ -16,7 +16,7 @@ public class LinkedListTest {
     }
 
     @Test
-    public void testSomeLibraryMethod() {
+    public void emptyInitiatedList() {
         assertNull("Empty linked list head should be null", testList.head);
         assertEquals("Empty linked list size should be zero", 0, testList.getSize());
     }
