@@ -24,22 +24,30 @@ space O(1) - no additional data structures used.
 additional data structure with N elements (array list).
 
 ## API
-    *Insert()*
-     Takes any value as an argument
-     and adds a new node with that value
-     to the head of the list with an O(1) Time performance
-     @param data int value to insert in new node
-     
-    *Includes(searchValue)*
-     Takes any value as an argument
-     and returns a boolean result depending
-     on whether that value exists
-     as a Node’s value somewhere within the list.
-     @param searchValue int to search for
-     @return boolean true if value is found, else false
-     
-    *print()*
-     Takes in no arguments
-     and returns an ArrayList
-     of the current Node values in the Linked List.
-     @return list of all values in linked list
+*Insert()*
+Takes any value as an argument
+and adds a new node with that value
+to the head of the list with an O(1) Time performance
+@param data int value to insert in new node
+ 
+*Includes(searchValue)*
+Takes any value as an argument
+and returns a boolean result depending
+on whether that value exists
+as a Node’s value somewhere within the list.
+@param searchValue int to search for
+@return boolean true if value is found, else false
+ 
+*print()*
+Takes in no arguments
+and returns an ArrayList
+of the current Node values in the Linked List.
+@return list of all values in linked list
+
+*getHeadData()* 
+Getter for head data.
+@return value of head element
+
+*getSize()*
+Getter for size of linked list.
+@return int how many elements are in list
