@@ -10,11 +10,15 @@ public class LinkedList {
     Node head;
     private static int size;
 
+    public LinkedList() {
+        size = 0;
+    }
+
     private static class Node {
-        private int data;
+        private Object data;
         private Node next;
 
-        private Node(int data, Node next)
+        private Node(Object data, Node next)
         {
             this.data = data;
             this.next = next;
@@ -51,7 +55,7 @@ public class LinkedList {
      boolean includes(int searchValue) {
         Node current = head;
         while(current != null) {
-            if(current.data == searchValue) {
+            if(current.data.equals(searchValue)) {
                 return true;
             }
             current = current.next;
@@ -66,8 +70,8 @@ public class LinkedList {
      * of the current Node values in the Linked List.
      * @return
      */
-     List<Integer> print() {
-        List<Integer> nodeList = new ArrayList<>();
+     List<Object> print() {
+        List<Object> nodeList = new ArrayList<>();
 
         Node current = head;
 
@@ -78,7 +82,7 @@ public class LinkedList {
         return nodeList;
     }
 
-     int getHeadData() {
+     Object getHeadData() {
         return this.head.data;
     }
 

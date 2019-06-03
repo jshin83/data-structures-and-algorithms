@@ -9,7 +9,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class LinkedListTest {
-    LinkedList testList;
+    private LinkedList testList;
     @Before
     public void init() {
         testList = new LinkedList();
