@@ -8,6 +8,7 @@ import java.util.List;
 
 public class LinkedList {
     Node head;
+    private Node tail;
     private static int size;
 
     public LinkedList() {
@@ -31,12 +32,13 @@ public class LinkedList {
      * to the head of the list with an O(1) Time performance
      * @param data int value to insert in new node
      */
-     void insert(int data) {
+     void insert(Object data) {
         Node newNode;
 
         if(head == null) {
             newNode = new Node(data, null);
             head = newNode;
+            tail = newNode;
         } else {
             newNode = new Node(data, head);
             head = newNode;
@@ -75,11 +77,101 @@ public class LinkedList {
 
         Node current = head;
 
-        while (head != null) {
+        while (current != null) {
             nodeList.add(current.data);
+            current = current.next;
         }
 
         return nodeList;
+    }
+
+    /**
+     * Adds a new node with the given value to the end of the list.
+     * @param value value for Node to be inserted at end
+     */
+    void append(Object value) {
+        if(head == null) {
+            insert(value);
+        } else  {
+            Node newNode = new Node(value, null);
+            tail.next = newNode;
+            tail = newNode;
+            size++;
+        }
+    }
+
+    /**
+     * Add a new node with the given newValue
+     * immediately before the search value node.
+     * @param searchValue value to look for in list
+     * @param newValue value to insert as new Node data
+     */
+    void insertBefore(Object searchValue, Object newValue) {
+
+        if (head != null) {
+            if (size == 1 && head.data.equals(searchValue)) {
+                insert(newValue);
+                return;
+            } else {
+                Node newNode;
+                Node current = head;
+
+                while (current.next != null) {
+                    if (current.next.data.equals(searchValue)) {
+                        newNode = new Node(newValue, current.next);
+                        current.next = newNode;
+                        size++;
+                        return;
+                    }
+                    current = current.next;
+                }
+                //check if last element in list is the search value
+                if (tail.data.equals(searchValue)) {
+                    newNode = new Node(newValue, tail);
+                    current.next = newNode;
+                    size++;
+                    return;
+                }
+            }
+        }
+
+        // search value doesn't exist in list
+        throw new IllegalArgumentException("Element does not exist");
+
+    }
+
+    /**
+     * Add a new node with the given newValue
+     * immediately after the search value node.
+     * @param searchValue value to search for in linked list
+     * @param newValue value to insert as new Node data
+     */
+    void insertAfter(Object searchValue, Object newValue) {
+
+        Node newNode;
+        if (head == null) {
+            throw new IllegalArgumentException("List is empty");
+        }
+        if (size == 1 && head.data.equals(searchValue)) {
+            newNode = new Node(newValue, null);
+            tail.next = newNode;
+            tail = newNode;
+            size++;
+            return;
+        }
+        Node current = head;
+        while (current != null) {
+            if (current.data.equals(searchValue)) {
+                current.next = new Node(newValue, current.next);
+                size++;
+                return;
+            }
+            current = current.next;
+        }
+
+        //search value doesn't exist
+        throw new IllegalArgumentException("Element does not exist");
+
     }
 
     /**
@@ -96,6 +188,14 @@ public class LinkedList {
      */
      int getSize() {
         return size;
+    }
+
+    /**
+     * Getter for tail data.
+     * @return data for last element of list
+     */
+    Object getTailData() {
+         return this.tail.data;
     }
 
 }
