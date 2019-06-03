@@ -52,7 +52,7 @@ public class LinkedList {
      * @param searchValue int to search for
      * @return boolean true if value is found, else false
      */
-     boolean includes(int searchValue) {
+     boolean includes(Object searchValue) {
         Node current = head;
         while(current != null) {
             if(current.data.equals(searchValue)) {
@@ -82,10 +82,18 @@ public class LinkedList {
         return nodeList;
     }
 
+    /**
+     * Getter for head data
+     * @return value of head element
+     */
      Object getHeadData() {
         return this.head.data;
     }
 
+    /**
+     * Getter for size of linked list.
+     * @return int how many elements are in list
+     */
      int getSize() {
         return size;
     }
