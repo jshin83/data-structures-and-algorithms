@@ -15,8 +15,8 @@ Create singly linked list.
 ![](../401-code-challenges/assets/insertbefore.jpg)
 
 
-###Big O:
-Firstly, I wrote the methods with int.
+### Big O:
+First, I wrote the methods with int.
 Then, I changed to accept Object, and modified some of the methods ie == has to be .equals.
 I included a size property, so I could include it in test, and a few getters.
 I had to write a constructor, vs using default, so I could refresh size to 0 every time a new linked list
