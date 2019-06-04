@@ -3,10 +3,18 @@
 
 ## Challenge
 <!-- Description of the challenge -->
-Create singly linked list with three methods.
+Create singly linked list.
 
 ## Approach & Efficiency
-<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+[code](./src/main/java/Data/Structures/LinkedList.java)
+
+![](../401-code-challenges/assets/append.jpg)
+
+![](../401-code-challenges/assets/insertafter.jpg)
+
+![](../401-code-challenges/assets/insertbefore.jpg)
+
+
 ###Big O:
 Firstly, I wrote the methods with int.
 Then, I changed to accept Object, and modified some of the methods ie == has to be .equals.
