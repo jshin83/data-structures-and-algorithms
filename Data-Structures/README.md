@@ -56,7 +56,7 @@ time O(N) : worst-case is at the end of the list, so must iterate N steps.
 space O(1) : constant amount of space to create and attach new node.
 
 **`kthValueFromEnd`**
-time O(N) : worst-case value is front of list, or N steps.
+time O(N) : worst-case value is value one from last, or N - 1 steps -> O(N).
 space O(1) : constant amount of variables used.
 
 ## API
