@@ -134,10 +134,8 @@ public class LinkedList {
                 }
             }
         }
-
         // search value doesn't exist in list
         throw new IllegalArgumentException("Element does not exist");
-
     }
 
     /**
@@ -171,7 +169,31 @@ public class LinkedList {
 
         //search value doesn't exist
         throw new IllegalArgumentException("Element does not exist");
+    }
 
+    /**
+     * Takes a number, k, as a parameter.
+     * Return the node’s value that is k from the end of the linked list
+     * @param k value from the end of linked list
+     * @return Object value at the kth node from the end of the linked list
+     */
+    Object kthValueFromEnd(int k) {
+        if(head == null) {
+            throw new NullPointerException("Linked list is empty");
+        }
+        if(k == 0) {
+            return tail.data;
+        }
+        if(k > size || k < 0) {
+            throw new IllegalArgumentException("The number is out of bounds");
+        }
+        int count = 0;
+        Node current = head;
+        while(count != (size - k)) {
+            current = current.next;
+            count++;
+        }
+        return current.data;
     }
 
     /**

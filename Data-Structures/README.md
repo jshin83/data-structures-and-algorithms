@@ -8,11 +8,17 @@ Create singly linked list.
 ## Approach & Efficiency
 [code](./src/main/java/Data/Structures/LinkedList.java)
 
-![](../401-code-challenges/assets/append.jpg)
+*append*
+![append](../401-code-challenges/assets/append.jpg)
 
-![](../401-code-challenges/assets/insertafter.jpg)
+*insertAfter*
+![insertAfter](../401-code-challenges/assets/insertafter.jpg)
 
-![](../401-code-challenges/assets/insertbefore.jpg)
+*insertBefore*
+![insertBefore](../401-code-challenges/assets/insertbefore.jpg)
+
+*kthFromEnd*
+![kthFromEnd](../401-code-challenges/assets/kth.jpg)
 
 
 ### Big O:
@@ -48,6 +54,10 @@ space O(1) : constant amount of space to create and attach new node.
 **`insertAfter`**
 time O(N) : worst-case is at the end of the list, so must iterate N steps.
 space O(1) : constant amount of space to create and attach new node.
+
+**`kthValueFromEnd`**
+time O(N) : worst-case value is value one from last, or N - 1 steps -> O(N).
+space O(1) : constant amount of variables used.
 
 ## API
 `Insert(value)`
@@ -95,11 +105,20 @@ an Illegal Argument Exception is thrown.
 
 @newValue data for new Node, which is to be appended to list before searched element
 
+`kthValueFromEnd(value)`
+Takes a number, k, as a parameter.
+Return the node’s value that is k from the end of the linked list.
+If value is negative number or larger than ll size, IllegalArgumentException is thrown.
+If list is empty, NullPointerException is thrown.
+
+@param k value from the end of linked list
+
+@return Object value at the kth node from the end of the linked list
+
 `getHeadData()` 
 Getter for head data.
 
 @return value of head element
-
 
 `getSize()`
 Getter for size of linked list.

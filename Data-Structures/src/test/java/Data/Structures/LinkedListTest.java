@@ -149,4 +149,33 @@ public class LinkedListTest {
         testList.insertAfter(99, 1);
 
     }
+
+    @Test
+    public void kthValueTest() {
+        testList.insert(1);
+        assertEquals("Should get tail, 1 expected", 1, testList.kthValueFromEnd(0));
+
+        testList.append(2);
+        testList.append(3);
+        //middle of list
+        assertEquals("2nd to last kth value", 2, testList.kthValueFromEnd(2));
+        //zero passed, gets tail
+        assertEquals("Should get tail, 1 expected", 3, testList.kthValueFromEnd(0));
+        //k equals length of list
+        assertEquals("Should get head, 1 expected", 1, testList.kthValueFromEnd(3));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void outOfBoundsKth() {
+        testList.insert(1);
+        //k too large
+        testList.kthValueFromEnd(3);
+        //k is negative number
+        testList.kthValueFromEnd(-1);
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void kthValueOnEmpty() {
+        testList.kthValueFromEnd(1);
+    }
 }
