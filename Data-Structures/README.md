@@ -20,6 +20,9 @@ Create singly linked list.
 *kthFromEnd*
 ![kthFromEnd](../401-code-challenges/assets/kth.jpg)
 
+*mergeLists*
+![merge](../401-code-challenges/assets/merge.jpg)
+
 
 ### Big O:
 First, I wrote the methods with int.
@@ -58,6 +61,12 @@ space O(1) : constant amount of space to create and attach new node.
 **`kthValueFromEnd`**
 time O(N) : worst-case value is value one from last, or N - 1 steps -> O(N).
 space O(1) : constant amount of variables used.
+
+**`mergeLists`**
+time O(N + M) : must look at all nodes in first list (N)
+and all nodes in second list (M).
+space O(1) : constant amount of variables,
+impervious to change in input size.
 
 ## API
 `Insert(value)`
@@ -114,6 +123,17 @@ If list is empty, NullPointerException is thrown.
 @param k value from the end of linked list
 
 @return Object value at the kth node from the end of the linked list
+
+`mergeLists(listOne, listTwo)`
+Take in two linked lists, merge them with
+alternating nodes from each list, and return
+one linked list.
+
+@param one linked list
+
+@param two linked list
+
+@return linked list
 
 `getHeadData()` 
 Getter for head data.
