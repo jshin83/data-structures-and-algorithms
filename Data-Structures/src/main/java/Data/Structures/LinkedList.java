@@ -197,6 +197,58 @@ public class LinkedList {
     }
 
     /**
+     * Take in two linked lists, merge them with
+     * alternating nodes from each list, and return
+     * one linked list.
+     * @param one linked list
+     * @param two linked list
+     * @return linked list
+     */
+    public static LinkedList mergeLists(LinkedList one, LinkedList two) {
+        if(one.head == null && two.head == null) {
+            throw new IllegalArgumentException("Both input lists are empty");
+        }
+        if(one.head == null) {
+            return two;
+        }
+        if(two.head == null) {
+            return one;
+        }
+        if(one.getSize() == 1 && two.getSize() == 1) {
+            one.head.next = two.head;
+            return one;
+        }
+
+        Node current1 = one.head;
+        Node current2 = two.head;
+
+        while(current1.next != null && current2.next != null) {
+            Node tracker1 = current1.next;
+            Node tracker2 = current2.next;
+
+            //connect first to second
+            current1.next = current2;
+            current2.next = tracker1;
+
+            //move current to next node to do above steps again
+            current1 = tracker1;
+            current2 = tracker2;
+        }
+
+        if(current1.next == null) {
+            current1.next = current2;
+        }
+        if(current2.next == null) {
+            current2.next = current1.next;
+            current1.next = current2;
+        }
+
+
+        return one;
+
+    }
+
+    /**
      * Getter for head data
      * @return value of head element
      */
