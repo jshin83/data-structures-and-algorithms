@@ -52,7 +52,7 @@ public class Stack {
     /**
      * Returns the value of the node located on top of the stack,
      * without removing it from the stack.
-     * @return
+     * @return int, value of first Node
      */
 
     int peek() {
