@@ -1,10 +1,10 @@
-# Pseudoqueue
+# Pseudo Queue
 <!-- Short summary or background information -->
 
 ## Challenge
 <!-- Description of the challenge -->
-Create a pseudoqueue class that acts like a queue
-but is done with two Stacks.
+Create a Pseudo Queue class that acts like a queue
+but is actually two Stacks.
 
 ## Approach & Efficiency
 [code](./src/main/java/pseudoqueue/QueueWithStacks.java)
