@@ -14,7 +14,7 @@ public class Stack {
      * to the top of the stack with an O(1) Time performance.
      * @param data Object data of node you want to add
      */
-    void push(int data) {
+    public void push(int data) {
         Node newNode;
         if(top == null) {
             newNode = new Node(data, null);
@@ -31,7 +31,7 @@ public class Stack {
      * and returns the node’s value.
      * @return int, value of node removed from stack
      */
-    int pop() {
+    public int pop() {
         if(top == null) {
             throw new NullPointerException("List is empty");
         }
@@ -68,5 +68,9 @@ public class Stack {
 
     public int getTopData() {
         return top.getData();
+    }
+
+    public Node getTop() {
+        return top;
     }
 }

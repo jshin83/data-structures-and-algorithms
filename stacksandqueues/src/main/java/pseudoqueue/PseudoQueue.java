@@ -2,7 +2,7 @@ package pseudoqueue;
 
 import stacksandqueues.Stack;
 
-public class QueueWithStacks {
+public class PseudoQueue {
     Stack queue;
     Stack reverser;
 
@@ -10,7 +10,7 @@ public class QueueWithStacks {
      * This class emulates a queue
      * but instantiates two Stacks.
      */
-    public QueueWithStacks() {
+    public PseudoQueue() {
         queue = new Stack();
         reverser = new Stack();
     }
