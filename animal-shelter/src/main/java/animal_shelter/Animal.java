@@ -1,4 +1,10 @@
 package animal_shelter;
 
-public class Animal {
+public abstract class Animal {
+    String name;
+
+    public Animal(String name) {
+        this.name = name;
+    }
+
 }
