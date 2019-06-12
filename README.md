@@ -9,3 +9,4 @@
 4. [Linked Lists](data-Structures)
 5. [Stacks and Queues](./stacksandqueues/src/main/java/stacksandqueues)
 6. [Pseudo Queue](./stacksandqueues/src/main/java/pseudoqueue)
+7. [Animal Shelter](./animal-shelter/src/main/java/animal_shelter)
