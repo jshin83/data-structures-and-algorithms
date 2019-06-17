@@ -17,12 +17,13 @@ public class Tree<E extends Comparable<? super E>> {
 
     /**
      * Returns list of preorder tree.
-     * Throws error if tree is empty.
+     * Prints error if tree is empty.
      * @return ArrayList of values in Pre Order sequence.
      */
     public List<E> preOrder() {
         if(root == null) {
-            throw new NullPointerException("Tree is empty");
+            System.out.println("Tree is empty");
+            return null;
         }
         traversalList = new ArrayList<>();
         addPreOrder(root);
@@ -45,12 +46,13 @@ public class Tree<E extends Comparable<? super E>> {
 
     /**
      * Returns list of inorder sequence.
-     * Throws error if tree is empty.
+     * Prints error if tree is empty.
      * @return ArrayList of values in In Order sequence.
      */
     public List<E> inOrder() {
         if(root == null) {
-            throw new NullPointerException("Tree is empty");
+            System.out.println("Tree is empty");
+            return null;
         }
         traversalList = new ArrayList<>();
         addInOrder(root);
@@ -74,12 +76,13 @@ public class Tree<E extends Comparable<? super E>> {
 
     /**
      * Returns list of post order sequence.
-     * Throws error if tree is empty.
+     * Prints error if tree is empty.
      * @return ArrayList of values in Post Order sequence.
      */
     public List<E> postOrder() {
         if(root == null) {
-            throw new NullPointerException("Tree is empty");
+            System.out.println("Tree is empty");
+            return null;
         }
         traversalList = new ArrayList<>();
         addPostOrder(root);
@@ -92,10 +95,10 @@ public class Tree<E extends Comparable<? super E>> {
         }
 
         //traverse left
-        addPreOrder(node.left);
+        addPostOrder(node.left);
 
         //traverse right
-        addPreOrder(node.right);
+        addPostOrder(node.right);
 
         //root
         traversalList.add(node.data);

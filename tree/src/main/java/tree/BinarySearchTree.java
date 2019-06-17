@@ -1,6 +1,6 @@
 package tree;
 
-public class BinarySearchTree<E extends Comparable<? super E>> {
+public class BinarySearchTree<E extends Comparable<? super E>> extends Tree<E> {
     Node<E> root;
 
     /**
@@ -47,6 +47,10 @@ public class BinarySearchTree<E extends Comparable<? super E>> {
      * @return boolean, true if value exists, false if not
      */
     public boolean contains(Node<E> root, E value) {
+        if(root == null) {
+            System.out.println("List is empty");
+            return false;
+        }
         return containsNode(root, value);
     }
 
@@ -57,8 +61,9 @@ public class BinarySearchTree<E extends Comparable<? super E>> {
         }
         else {
             int compare = value.compareTo(root.data);
-            if (compare == 0) return true; //found a duplicate
+            if (compare == 0) return true; //found a duplicate! return true
             else if (compare < 0) return contains(root.left, value);
-            else /* compare > 0 */ return contains(root.right, value);}
+            else /* compare > 0 */ return contains(root.right, value);
+            }
         }
     }
