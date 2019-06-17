@@ -3,7 +3,7 @@
  */
 package tree;
 
-public class Node<E> {
+public class Node<E extends Comparable<? super E>> {
     E data;
     Node<E> left;
     Node<E> right;
@@ -13,4 +13,9 @@ public class Node<E> {
         this.left = left;
         this.right = right;
     }
+
+//    public int compareTo(Node<E> b) {
+//        return this.data.compareTo(b.data);
+//    }
+
 }
