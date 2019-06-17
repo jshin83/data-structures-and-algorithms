@@ -14,8 +14,4 @@ public class Node<E extends Comparable<? super E>> {
         this.right = right;
     }
 
-//    public int compareTo(Node<E> b) {
-//        return this.data.compareTo(b.data);
-//    }
-
 }

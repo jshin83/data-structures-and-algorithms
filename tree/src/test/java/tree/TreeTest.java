@@ -21,7 +21,6 @@ public class TreeTest {
         tree.root = new Node<>("hi", new Node<>("yup", null, null), lastNode);
     }
 
-
     @Test
     public void testEmpty() {
         assertNull("Tree should be empty at initialization", tree.root);

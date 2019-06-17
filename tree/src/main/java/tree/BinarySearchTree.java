@@ -1,15 +1,6 @@
 package tree;
 
 public class BinarySearchTree<E extends Comparable<? super E>> extends Tree<E> {
-    Node<E> root;
-
-    /**
-     * Constructor.
-     * Initializes root to null.
-     */
-    public BinarySearchTree() {
-        root = null;
-    }
 
     /**
      * Adds a new node to the tree.
@@ -17,25 +8,24 @@ public class BinarySearchTree<E extends Comparable<? super E>> extends Tree<E> {
      * @param value value of Node to be added, generic
      * @return Node, modified tree
      */
-    public Node<E> add(E value) {
-        if(root == null) {
-            root = new Node<>(value, null, null);
+    public void add(E value) {
+        if (root == null) {
+            this.root = new Node(value, null, null);
         } else {
-            addNode(value, root);
+            this.root = add(value, root);
         }
-        return root;
     }
 
     //helper - recursive method for add node
-    private Node<E> addNode(E value, Node<E> root) {
+    private Node<E> add(E value, Node<E> root) {
         if(root == null) {
-            return add(value);
+            return new Node<E>(value, null, null);
         }
         int compare = value.compareTo(root.data);
         if(compare < 0) {
-            root.left = addNode(value, root.left);
+            root.left = add(value, root.left);
         } else if (compare > 0) {
-            root.right = addNode(value, root.right);
+            root.right = add(value, root.right);
         }
         return root;
     }
