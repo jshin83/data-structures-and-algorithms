@@ -12,3 +12,4 @@
 7. [Animal Shelter](./animal-shelter/src/main/java/animal_shelter)
 8. [MultiBracket Validation](./401-code-challenges/multibracketvalidation)
 9. [Trees](./tree)
+10. [FizzBuzz](./tree/src/main/java/fizzbuzz)
