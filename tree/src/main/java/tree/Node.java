@@ -14,4 +14,19 @@ public class Node<E extends Comparable<? super E>> {
         this.right = right;
     }
 
+    public E getData() {
+        return data;
+    }
+
+    public void setData(E data) {
+        this.data = data;
+    }
+
+    public Node<E> getLeft() {
+        return left;
+    }
+
+    public Node<E> getRight() {
+        return right;
+    }
 }

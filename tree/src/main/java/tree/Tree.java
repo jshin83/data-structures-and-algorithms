@@ -103,4 +103,12 @@ public class Tree<E extends Comparable<? super E>> {
         //root
         traversalList.add(node.data);
     }
+
+    public Node<E> getRoot() {
+        return root;
+    }
+
+    public void setRoot(Node<E> root) {
+        this.root = root;
+    }
 }
