@@ -41,6 +41,27 @@ public class Tree<E extends Comparable<? super E>> {
     }
 
     /**
+     * Breadth first traversal of tree
+     * utilizing Linked List.
+     * Saves to a List.
+     * @return List of Strings containing data in BFS traversal
+     */
+    public void printBreadthFirst() {
+        if(root == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        LinkedList<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while(!queue.isEmpty()) {
+            Node node = queue.removeFirst();
+            System.out.println(node.data);
+            if(node.left != null) queue.add(node.left);
+            if(node.right != null) queue.add(node.right);
+        }
+    }
+
+    /**
      * Returns list of preorder tree.
      * Prints error if tree is empty.
      * @return ArrayList of values in Pre Order sequence.

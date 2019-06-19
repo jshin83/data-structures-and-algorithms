@@ -109,6 +109,9 @@ public class BstTest {
                         "cat\n" +
                         "zebra\n",
                 result2String.toString());
+
+        intTree.printBreadthFirst();
+        tree.printBreadthFirst();
     }
 
 }
