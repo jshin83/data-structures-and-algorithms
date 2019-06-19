@@ -6,12 +6,18 @@
 Write a breadth first traversal.
 
 ## Approach & Efficiency
-**`breadthFirst(Tree)`**
+**`breadthFirst()`**
 
 Time O(N) must visit each node.
 
 Space O(N) for a list that returns data. Only used this for testing purposes; 
 else, space would be O(1) if I simply sysout the data to console.
+
+**`printBreadthFirst()`**
+
+Time O(N) must visit each node.
+
+Space O(1) constant number of variables, impervious to data size.
 
 Use a linked list to keep track of Nodes to visit. 
 Put root in linked list.
@@ -21,7 +27,7 @@ if they do.
 Iterate until list is empty.
 
 
-![code](../401-code-challenges/assets/fizzbuzz.jpg)
+![code](../401-code-challenges/assets/bf.jpg)
 
 [test](./src/test/java/tree/BstTest.java) - under BstTest
 
