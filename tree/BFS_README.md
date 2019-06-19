@@ -27,4 +27,7 @@ Iterate until list is empty.
 
 ## API
 **`breadthFirst(Tree)`**
-Not a static method. Accepts a Tree, return ArrayList of data in breadth first order.
+Not a static method. No input, return ArrayList of data in breadth first order.
+
+**`printBreadthFirst()`**
+Not a static method. No input, no output. Prints out node in BF order.
