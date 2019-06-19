@@ -1,5 +1,9 @@
 package tree;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class BinarySearchTree<E extends Comparable<? super E>> extends Tree<E> {
 
     /**
@@ -9,25 +13,25 @@ public class BinarySearchTree<E extends Comparable<? super E>> extends Tree<E> {
      * @return Node, modified tree
      */
     public void add(E value) {
-        if (root == null) {
-            this.root = new Node(value, null, null);
-        } else {
+//        if (root == null) {
+//            this.root = new Node<E>(value, null, null);
+//        } else {
             this.root = add(value, root);
-        }
+//        }
     }
 
     //helper - recursive method for add node
-    private Node<E> add(E value, Node<E> root) {
-        if(root == null) {
+    private Node<E> add(E value, Node<E> node) {
+        if(node == null) {
             return new Node<E>(value, null, null);
         }
-        int compare = value.compareTo(root.data);
+        int compare = value.compareTo(node.data);
         if(compare < 0) {
-            root.left = add(value, root.left);
+            node.left = add(value, node.left);
         } else if (compare > 0) {
-            root.right = add(value, root.right);
+            node.right = add(value, node.right);
         }
-        return root;
+        return node;
     }
 
     /**

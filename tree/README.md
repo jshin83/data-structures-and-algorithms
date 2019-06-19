@@ -5,6 +5,7 @@
 <!-- Description of the challenge -->
 Implement Tree and Binary Search Tree.
 Used generic data type.
+Worked collaboratively with Jorie Fernandez.
 
 ## Approach & Efficiency
 <!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
@@ -43,3 +44,4 @@ Space O(1) - in-place change so no extra data structures are used.
 
 #### FizzBuzzTree
 **`fizzbuzztree(Tree)`**
+
