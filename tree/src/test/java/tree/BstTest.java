@@ -71,4 +71,44 @@ public class BstTest {
                 resultString.toString());
     }
 
+    @Test
+    public void breadthFirst() {
+        BinarySearchTree<Integer> intTree = new BinarySearchTree<>();
+        intTree.add(5);
+        intTree.add(3);
+        intTree.add(7);
+        intTree.add(9);
+        intTree.add(4);
+        List<String> result = intTree.breadthFirst();
+        StringBuilder resultString = new StringBuilder();
+        for(String data : result) {
+            resultString.append(data);
+            resultString.append("\n");
+        }
+
+        assertEquals("Breadth first iteration of integer tree should bring back 5, 3, 7, 4, 9",
+                "5\n" +
+                        "3\n" +
+                        "7\n" +
+                        "4\n" +
+                        "9\n",
+                resultString.toString());
+
+        addToTree();
+        List<String> result2 = tree.breadthFirst();
+        StringBuilder result2String = new StringBuilder();
+        for(String data : result2) {
+            result2String.append(data);
+            result2String.append("\n");
+        }
+
+        assertEquals("Breadth first iteration of String tree should bring back 5, 3, 7, 4, 9",
+                "hi\n" +
+                        "dog\n" +
+                        "horse\n" +
+                        "cat\n" +
+                        "zebra\n",
+                result2String.toString());
+    }
+
 }

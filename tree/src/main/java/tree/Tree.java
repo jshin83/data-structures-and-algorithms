@@ -1,6 +1,7 @@
 package tree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Tree<E extends Comparable<? super E>> {
@@ -13,6 +14,30 @@ public class Tree<E extends Comparable<? super E>> {
      */
     public Tree() {
         root = null;
+    }
+
+
+    /**
+     * Breadth first traversal of tree
+     * utilizing Linked List.
+     * Saves to a List.
+     * @return List of Strings containing data in BFS traversal
+     */
+    public List<String> breadthFirst() {
+        if(root == null) {
+            System.out.println("List is empty");
+            return null;
+        }
+        List<String> result = new ArrayList<>();
+        LinkedList<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while(!queue.isEmpty()) {
+            Node node = queue.removeFirst();
+            result.add(node.data.toString());
+            if(node.left != null) queue.add(node.left);
+            if(node.right != null) queue.add(node.right);
+        }
+        return result;
     }
 
     /**
