@@ -18,6 +18,47 @@ public class Tree<E extends Comparable<? super E>> {
 
 
     /**
+     * Finds max value
+     * in a tree that holds Integers.
+     */
+    public static int findMaxValue(Tree<Integer> tree) {
+        if (tree.root == null) {
+            System.out.println("Your input tree is empty");
+            return 0;
+        }
+        int max = tree.root.data;
+        return findMax(max, tree.root);
+    }
+
+    private static int findMax(int max, Node<Integer> node) {
+        if(node == null) {
+            return max;
+        } else {
+            if(node.data > max) max = node.data;
+            max = findMax(max, node.left);
+            max = findMax(max, node.right);
+        }
+        return max;
+    }
+
+    public static int breadthFirstFindMax(Tree<Integer> tree) {
+        if(tree.root == null) {
+            System.out.println("List is empty");
+            return 0;
+        }
+        int max = tree.root.data;
+        LinkedList<Node> queue = new LinkedList<>();
+        queue.add(tree.root);
+        while(!queue.isEmpty()) {
+            Node<Integer> node = queue.removeFirst();
+            if(node.data > max) max = node.data;
+            if(node.left != null) queue.add(node.left);
+            if(node.right != null) queue.add(node.right);
+        }
+        return max;
+    }
+
+    /**
      * Breadth first traversal of tree
      * utilizing Linked List.
      * Saves to a List.
@@ -43,8 +84,7 @@ public class Tree<E extends Comparable<? super E>> {
     /**
      * Breadth first traversal of tree
      * utilizing Linked List.
-     * Saves to a List.
-     * @return List of Strings containing data in BFS traversal
+     * Prints node data while traversing the tree.
      */
     public void printBreadthFirst() {
         if(root == null) {
