@@ -24,7 +24,7 @@ is mostly sorted.
  from index from i to 0 to "insert" the element a position, if the data in the index to the left is less than the element.
 
 ## Pseudocode
-  `InsertionSort(int[] arr)
+    `InsertionSort(int[] arr)
 
     FOR i = 1 to arr.length
 
@@ -44,3 +44,4 @@ is mostly sorted.
 ### Read and Bookmark
 
 + Article 1: [Khan Academy](https://www.khanacademy.org/computing/computer-science/algorithms/insertion-sort/a/insertion-sort)
++ Article 2: [Tutorial Horizon](https://algorithms.tutorialhorizon.com/insertion-sort-java-implementation/)
