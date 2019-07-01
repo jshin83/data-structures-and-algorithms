@@ -1,5 +1,5 @@
 # Challenge Summary
-This directory contains the working algorithm for insertion sort and a lecture flow.
+This directory contains the working algorithm for insertion sort and a [lecture](./LECTURE.md) flow.
 
 ## Challenge Description
 This sort algorithm requires two loops. In the inner loop, a pointer moves to index 0. If the element
