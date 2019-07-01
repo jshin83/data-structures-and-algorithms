@@ -15,3 +15,4 @@
 10. [FizzBuzz](./tree/src/main/java/fizzbuzz)
 11. [Breadth First](./tree/src/main/java/tree/tree.java)
 12. [Find Max](./tree/src/main/java/tree/tree.java)
+13. [Insertion Sort](./401-code-challenges/insertionsort)
