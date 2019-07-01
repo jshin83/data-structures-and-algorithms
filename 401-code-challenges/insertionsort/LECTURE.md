@@ -24,7 +24,7 @@ is mostly sorted.
  from index from i to 0 to "insert" the element a position, if the data in the index to the left is less than the element.
 
 ## Pseudocode
-    `InsertionSort(int[] arr)
+    InsertionSort(int[] arr)
 
     FOR i = 1 to arr.length
 
@@ -35,7 +35,7 @@ is mostly sorted.
         arr[j + 1] <-- arr[j]
         j <-- j - 1
 
-      arr[j + 1] <-- temp`
+      arr[j + 1] <-- temp
 
 ## Readings and References
 ### Watch
