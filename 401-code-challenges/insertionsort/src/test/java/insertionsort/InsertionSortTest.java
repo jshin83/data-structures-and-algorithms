@@ -22,7 +22,7 @@ public class InsertionSortTest {
     @Test public void testOneElemArray() {
         arr = new int[]{4};
         System.out.println(Arrays.toString(insertionSort(arr)));
-        assertArrayEquals("Array should be in order", new int[]{}, insertionSort(arr));
+        assertArrayEquals("Array should be in order", new int[]{4}, insertionSort(arr));
     }
 
     @Test public void testTwoElemArray() {
