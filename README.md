@@ -17,4 +17,4 @@
 12. [Find Max](./tree/src/main/java/tree/tree.java)
 13. [Insertion Sort](./401-code-challenges/insertionsort)
 14. [Merge Sort](./401-code-challenges/mergesort)
-15. [Quick Sort](./401-code-challenges/quicksort)
+15. [Quick Sort](./quicksort)
