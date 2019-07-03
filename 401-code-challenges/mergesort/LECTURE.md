@@ -12,12 +12,12 @@ element, the call works up and merges two subarrays.
 
 ## Lecture Flow
 + Definition
-+ [BigO](https://www.khanacademy.org/computing/computer-science/algorithms/merge-sort/a/analysis-of-merge-sort)
++ [Big O](https://www.khanacademy.org/computing/computer-science/algorithms/merge-sort/a/analysis-of-merge-sort)
 + How to code it
 
 ## Diagram
 
-Courtesy of GeeksForGeeks Visual[image](https://www.geeksforgeeks.org/wp-content/uploads/Merge-Sort-Tutorial.png)
+Courtesy of GeeksForGeeks Visual ![image](https://www.geeksforgeeks.org/wp-content/uploads/Merge-Sort-Tutorial.png)
 
 ## Algorithm
 
