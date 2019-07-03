@@ -4,11 +4,45 @@
 package quicksort;
 
 import org.junit.Test;
+
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
+import static quicksort.QuickSort.quickSort;
 
 public class QuickSortTest {
-    @Test public void testSomeLibraryMethod() {
-        QuickSort classUnderTest = new QuickSort();
-        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+    private int[] arr;
+
+    @Test (expected = NullPointerException.class)
+    public void nullArr() {
+        quickSort(arr, 0, 0);
     }
+
+    @Test
+    public void oneElem() {
+        int[] arr = new int[]{12};
+        assertArrayEquals(
+                "One element array should return itself",
+                new int[]{12},
+                quickSort(arr, 0, arr.length - 1));
+    }
+
+    @Test
+    public void twoElem() {
+        int[] arr = new int[]{4, -11};
+        assertArrayEquals(
+                "Array should be in order",
+                new int[]{-11, 4},
+                quickSort(arr, 0, arr.length - 1));
+    }
+
+    @Test
+    public void multipleNums() {
+        int[] arr = new int[]{4, -11, 3, 77, -5, 1000, 3, 17, 44, -55, 2, 12};
+        assertArrayEquals(
+                "Array should be in order",
+                new int[]{-55, -11, -5, 2, 3, 3, 4, 12, 17, 44, 77, 1000},
+                quickSort(arr, 0, arr.length - 1));
+    }
+
 }
