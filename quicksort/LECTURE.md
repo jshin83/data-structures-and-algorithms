@@ -22,11 +22,17 @@ right recurse this same process.
 
 ### Diagram
 ![one](https://www.interviewcake.com/images/svgs/quicksort__input_unsorted_list.svg?bust=203)
+
 ![two](https://www.interviewcake.com/images/svgs/quicksort__input_unsorted_list_with_left_and_right_pointer.svg?bust=203)
+
 ![three](https://www.interviewcake.com/images/svgs/quicksort__input_list_with_swappped_8_and_3.svg?bust=203)
+
 ![four](https://www.interviewcake.com/images/svgs/quicksort__input_list_with_moving_the_left_pointer_to_7.svg?bust=203)
+
 ![five](https://www.interviewcake.com/images/svgs/quicksort__input_list_with_moving_the_right_pointer_to_2.svg?bust=203)
+
 ![six](https://www.interviewcake.com/images/svgs/quicksort__input_list_with_swapped_pivot_and_7.svg?bust=203)
+
 ![seven](https://www.interviewcake.com/images/svgs/quicksort__input__list_divided_on_two_smaller_lists.svg?bust=203)
 
 ![diagram](https://i2.wp.com/www.techiedelight.com/wp-content/uploads/Quicksort.png?fit=577%2C410&ssl=1)
