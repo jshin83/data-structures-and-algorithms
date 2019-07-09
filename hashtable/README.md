@@ -6,7 +6,7 @@ If the hashed index is taken, the next open space is where an element is added.
 Duplicate keys will update the value.
 Attempting to add null key or value will throw error.
 
-When storage capacity reaches or exheeds 75%, the table resizes and rehashes existing elements.
+When storage capacity reaches or exceeds 75%, the table resizes and rehashes existing elements.
 
 ## Approach & Efficiency
 <!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
@@ -20,9 +20,9 @@ I suppose one advantage of chaining would be to insert, if you had a pointer, yo
 resulting in O(1) add time vs iterating to find a null index.
 
 ## API
-    + public void add(K key, V value)
-    + public V get(K key)
-    + public boolean contains(K key)
-    + public void delete(K key)
-    + public int getSize()
-    + public void print()
+    `public void add(K key, V value)`
+    `public V get(K key)`
+    `public boolean contains(K key)`
+    `public void delete(K key)`
+    `public int getSize()`
+    `public void print()`
