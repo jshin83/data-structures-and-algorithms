@@ -3,17 +3,24 @@
  */
 package hashtable;
 
-import java.util.Objects;
-
 public class HashTable<K, V> {
 
     public static void main(String[] args) {
         HashTable<String, String> demo = new HashTable<>();
         demo.add("hello", "world");
-        demo.add("yikes", null);
-        demo.add("hello", "world!!!");
+        demo.add("yikes", "yum");
+        demo.add("yup", "world!!!");
+        demo.add("bye", "yup");
+        demo.add("hm", "wallow");
+        demo.add("tee", "hee");
+        demo.add("jen", "ok");
+        demo.add("reset!", "boo");
+        demo.add("hullaboo", "yikes");
+        demo.add("hut", "poo");
+        demo.add("hush", "hee");
+        demo.add("hush", "revised");
         System.out.println(demo.contains("hello"));
-        demo.delete("yikes");
+        demo.delete("hullaboo");
         demo.print();
     }
     private final double RESET_LOAD = .75;
@@ -21,9 +28,20 @@ public class HashTable<K, V> {
     private int size;
     private Node[] table;
 
+    /**
+     * Default constructor
+     */
     public HashTable() {
         table = (Node[])new HashTable.Node[INITIAL_ARRAY_LENGTH];
         size = 0;
+    }
+
+    /**
+     * Constructor to specify capacity
+     * @param capacity int, capacity for new HashTable
+     */
+    public HashTable(int capacity) {
+        table = (Node[]) new HashTable.Node[capacity];
     }
 
     /**
@@ -33,99 +51,134 @@ public class HashTable<K, V> {
      * adds the key and value pair to the table,
      * handling collisions as needed.
      * Does not add null key or null value.
+     * Duplicate key overwrites value.
      * @param key Object, data for key
      * @param value Object, data for value
      */
     public void add(K key, V value) {
-        if(key == null) {
-            throw new IllegalArgumentException("Key cannot be a null value");
+        if(key == null || value == null) {
+            throw new IllegalArgumentException("Key or value cannot be null");
         }
-        if (value == null && contains(key)) {
-            delete(key);
+
+        // check if at reset load capacity and resize if true
+        if( size >= (table.length * RESET_LOAD)) {
+            System.out.println((double) size / table.length);
+            System.out.println("Have to resize!");
+            resize();
         }
-        else {
-            if( (size * .75) >= RESET_LOAD) {
-                resize();
+        Node newNode = new Node(key, value);
+        int index = hash(key);
+        System.out.println(key + " supposed to be added at index " + index);
+
+        while(table[index] != null) {
+            //if key is duplicate replace value
+            if(table[index].key.equals(key)) {
+                table[index].value = value;
+                return;
             }
-            Node newNode = new Node(key, value);
-            int index = hash(key);
-            if(table[index] != null) {
-                while(table[index] != null) {
-                    //if key is duplicate replace value
-                    if(table[index].key.equals(key)) {
-                        table[index].value = value;
-                        return;
-                    }
-                    index++;
-                }
+            // wrap around to front if at end
+            if(index + 1 == table.length) {
+                index = 0;
+            } else {
+                index++;
             }
-            table[index] = newNode;
-            size++;
+
         }
+        System.out.println(key + " inserted at index " + index);
+        table[index] = newNode;
+        size++;
     }
 
+    // helper to resize if reload capacity is reached or exceeded
     private void resize() {
-
+        //create new array with double capacity
+        HashTable<K, V> resizedTable = new HashTable<>(table.length * 2);
+        //copy over values / hash to new length
+        for (int i = 0; i < table.length; i++) {
+            if(table[i] != null) {
+                resizedTable.add(table[i].key, table[i].value);
+            }
+        }
+        table = resizedTable.table;
     }
 
+    /**
+     * Takes in the key and returns the value from the table.
+     * @param key Object, key to find
+     * @return value Object, value of corresponding key
+     */
     public V get(K key) {
         if(key == null) {
             throw new IllegalArgumentException("Table does not store null keys");
         }
-        //start at where the key hashes to and look until end or null spot, which means it doesn't exist
-        for(int i = hash(key); table[i] != null; i++) {
+        // start at where the key hashes to and look until null spot, which means it doesn't exist
+        // wrap around to index 0 if at end
+        // the condition to stop is when at an empty (null) index
+        for(int i = hash(key); table[i] != null; i = (i + 1) % table.length) {
             if(table[i].key.equals(key)) {
                 return table[i].value;
             }
         }
+        // key not found
         return null;
     }
 
+    /**
+     * Takes in the key and returns a boolean,
+     * indicating if the key exists in the table
+     * @param key Object, key to search for
+     * @return boolean, true if key exists else false
+     */
     public boolean contains(K key) {
         if(key == null) {
             throw new IllegalArgumentException("Table does not store null keys");
         }
-        //start at where the key hashes to and look until end or null spot, which means it doesn't exist
-//        for(int i = hash(key); table[i] != null; i++) {
-//            if(table[i].equals(key)) {
-//                return true;
-//            }
-//        }
-//        return false;
         return get(key) != null;
     }
 
+    /**
+     * Deletes a key if it exists in the table
+     * @param key Object, key to look for and delete
+     */
     public void delete(K key) {
         if(key == null) {
             throw new IllegalArgumentException("Table does not store null keys");
         }
-        //look for and find
-        for(int i = hash(key); table[i] != null; i++) {
+        System.out.println("key should be at index " + hash(key));
+        // find key
+        // anything less than a num mod by that num is itself
+        // else mod by itself == 0 --> this line is equivalent to
+        //        if(i + 1 == table.length) {
+        //                i = -1;
+        //            }
+        for(int i = hash(key); table[i] != null; i = (i + 1) % table.length) {
             if(table[i].key.equals(key)) {
                 //if found, delete
+                System.out.println("gotcha! deleted at index " + i);
                 table[i] = null;
                 size--;
             }
         }
     }
 
-
-    public int size() {
+    // getter for size
+    public int getSize() {
         return size;
     }
 
+    /**
+     * Prints values in readable format
+     */
     public void print() {
-        for (int i = 0; i < table.length - 1; i++) {
+        for (int i = 0; i < table.length; i++) {
             System.out.printf("%d: ", i);
 
-            Node temp = table[i];
-            if(temp != null) {
-                System.out.println("(" + temp.key + ", " + temp.value + ")");
+            Node node = table[i];
+            if(node != null) {
+                System.out.println("(" + node.key + ", " + node.value + ")");
             } else {
                 System.out.println("Empty");
             }
-            System.out.println();
-
 
             //this is if I want to implement chaining with array of linked list
 //            while (temp != null) {
@@ -140,14 +193,12 @@ public class HashTable<K, V> {
         }
     }
 
+    // helper that hashes key
     private int hash(K key) {
-        if (key == null) {
-            return -1;
-        }
         return Math.abs(key.hashCode() % this.table.length);
-        //return Objects.hash(node.key , node.value, this.table.length);
     }
 
+    // my node class, set up to accept next in case I want to chain
     private class Node {
         K key;
         V value;
