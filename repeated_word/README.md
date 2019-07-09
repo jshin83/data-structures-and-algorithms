@@ -34,5 +34,5 @@ Yes, I am aware my code could be drier (ie function to check punctuation and pro
 
 ## Solution
 <!-- Embedded whiteboard image -->
-![repeated word](..401-code-challenges/assets/repeated.jpg)
+![repeated word](../401-code-challenges/assets/repeated.jpg)
 
