@@ -3,7 +3,7 @@
 ## Challenge Description
 <!-- Description of the challenge -->
     public static String repeated_word(String parameter)
-    + Static method that checks an input String
+     Static method that checks an input String
      and returns first wod that occurs twice.
      Will evaluate ending punctuation
      and is **case-insensitive**.
@@ -34,5 +34,5 @@ Yes, I am aware my code could be drier (ie function to check punctuation and pro
 
 ## Solution
 <!-- Embedded whiteboard image -->
-![repeated word](../assets/repeated.jpg)
+![repeated word](..401-code-challenges/assets/repeated.jpg)
 
