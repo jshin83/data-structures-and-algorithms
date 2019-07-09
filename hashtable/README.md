@@ -20,9 +20,9 @@ I suppose one advantage of chaining would be to insert, if you had a pointer, yo
 resulting in O(1) add time vs iterating to find a null index.
 
 ## API
-    `public void add(K key, V value)`
-    `public V get(K key)`
-    `public boolean contains(K key)`
-    `public void delete(K key)`
-    `public int getSize()`
-    `public void print()`
+`public void add(K key, V value)`
+`public V get(K key)`
+`public boolean contains(K key)`
+`public void delete(K key)`
+`public int getSize()`
+`public void print()`
