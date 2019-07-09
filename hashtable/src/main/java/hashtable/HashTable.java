@@ -5,35 +5,6 @@ package hashtable;
 
 public class HashTable<K, V> {
 
-    public static void main(String[] args) {
-        HashTable<String, String> demo = new HashTable<>();
-        demo.add("hello", "world");
-        demo.add("yikes", "yum");
-        demo.add("yup", "world!!!");
-        demo.add("bye", "yup");
-        demo.add("hm", "wallow");
-        demo.add("tee", "hee");
-        demo.add("jen", "ok");
-        demo.add("reset!", "boo");
-        demo.add("hullaboo", "yikes");
-        demo.add("hut", "poo");
-        demo.add("hush", "hee");
-        demo.add("hush", "revised");
-        System.out.println(demo.contains("hello"));
-        demo.delete("hullaboo");
-        demo.print();
-
-        HashTable<Integer, String> num = new HashTable<>();
-        num.add(11, "hi");
-        num.add(2000, "yes");
-        num.add(99, "no");
-        num.add(43, "hi");
-        num.add(44, "hi");
-        num.add(45, "hi");
-        num.add(46, "hi");
-        num.add(47, "hi");
-        num.print();
-    }
     private final double RESET_LOAD = .75;
     private final int INITIAL_ARRAY_LENGTH = 12;
     private int size;
