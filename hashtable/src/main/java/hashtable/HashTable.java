@@ -22,6 +22,17 @@ public class HashTable<K, V> {
         System.out.println(demo.contains("hello"));
         demo.delete("hullaboo");
         demo.print();
+
+        HashTable<Integer, String> num = new HashTable<>();
+        num.add(11, "hi");
+        num.add(2000, "yes");
+        num.add(99, "no");
+        num.add(43, "hi");
+        num.add(44, "hi");
+        num.add(45, "hi");
+        num.add(46, "hi");
+        num.add(47, "hi");
+        num.print();
     }
     private final double RESET_LOAD = .75;
     private final int INITIAL_ARRAY_LENGTH = 12;
@@ -195,7 +206,7 @@ public class HashTable<K, V> {
 
     // helper that hashes key
     private int hash(K key) {
-        return Math.abs(key.hashCode() % this.table.length);
+        return Math.abs((key.hashCode() * 77) % this.table.length);
     }
 
     // my node class, set up to accept next in case I want to chain
