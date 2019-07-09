@@ -19,3 +19,4 @@
 14. [Merge Sort](./401-code-challenges/mergesort)
 15. [Quick Sort](./quicksort)
 16. [Hash Table](./hashtable) -> lab
+17. [Repeated Word](./repeated_word)
