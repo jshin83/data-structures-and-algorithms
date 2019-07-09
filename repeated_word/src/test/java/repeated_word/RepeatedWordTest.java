@@ -6,12 +6,14 @@ package repeated_word;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static repeated_word.RepeatedWord.repeated_word;
+import static repeated_word.RepeatedWord.repeated_word_sorted;
 
 public class RepeatedWordTest {
 
     @Test (expected = IllegalArgumentException.class)
     public void emptyInput() {
         repeated_word("");
+        repeated_word_sorted("");
     }
 
     @Test
@@ -66,5 +68,25 @@ public class RepeatedWordTest {
                 "a",
                 repeated_word(a)
         );
+    }
+
+    @Test
+    public void repeatedSorted() {
+        String hello = "hello the hello! dog runs with the cow";
+        assertEquals(
+                "should return 'hello'",
+                "hello",
+                repeated_word_sorted(hello)
+        );
+    }
+
+    @Test
+    public void repeatedSortedNull() {
+        String hello = "hello blue! the teeny tiny dog runs with a cow";
+        assertNull(
+                "should return 'null'",
+                repeated_word_sorted(hello)
+        );
+
     }
 }

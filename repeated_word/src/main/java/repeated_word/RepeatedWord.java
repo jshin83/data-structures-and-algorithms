@@ -9,34 +9,27 @@ import java.util.Set;
 
 public class RepeatedWord {
     private final static Set<Character> SPECIAL_CHARACTERS = new HashSet<>(Arrays.asList(',', '.', '!', '?', '"'));
-    private static Set<String> seen = new HashSet<>();
-
-
-    public static void main(String[] args) {
-        System.out.println(repeated_word_sorted("hello the dog runs with the cow"));
-    }
+    private static Set<String> seen;
 
     /**
      * Static method that checks an input String
      * and returns first wod that occurs twice.
      * Will evaluate ending punctuation
-     * and is case-sensitive.
+     * and is case-insensitive.
      * @param parameter String, input
      * @return String, word that occurs twice first
      */
     public static String repeated_word(String parameter) {
-
+        seen = new HashSet<>();
         if (parameter == null || parameter.equals("")) {
             throw new IllegalArgumentException("Input is empty");
         }
         String[] words = parameter.split(" ");
         for(int i = 0; i < words.length; i++) {
-            // check if special character and substring
-            if(SPECIAL_CHARACTERS.contains(words[i].charAt(words[i].length() - 1))) {
-                words[i] = words[i].substring(0, words[i].length() - 1);
-            }
-            // make lowercase
-            words[i] = words[i].toLowerCase();
+            // check if word ends with special character, make lowercase
+            words[i] = processWord(words[i]);
+            System.out.println(words[i]);
+
             // check set to see if word was already seen
             // and if so, return
             if(seen.contains(words[i])) {
@@ -48,7 +41,15 @@ public class RepeatedWord {
         return null;
     }
 
+    /**
+     * Takes in an input String,
+     * splits into array, and sorts the array.
+     * Checks array two words at a time and returns if words are equal.
+     * @param parameter String, input
+     * @return String
+     */
     public static String repeated_word_sorted(String parameter) {
+        seen = new HashSet<>();
         if (parameter == null || parameter.equals("")) {
             throw new IllegalArgumentException("Input is empty");
         }
@@ -57,16 +58,28 @@ public class RepeatedWord {
         Arrays.sort(words);
 
         for (int i = 0; i < words.length - 1; i++) {
-            if (SPECIAL_CHARACTERS.contains(words[i].charAt(words[i].length() - 1))) {
-                words[i] = words[i].substring(0, words[i].length() - 1);
-            }
-            if (SPECIAL_CHARACTERS.contains(words[i + 1].charAt(words[i + 1].length() - 1))) {
-                words[i + 1] = words[i + 1].substring(0, words[i + 1].length() - 1);
-            }
-            if (words[i].toLowerCase().equals(words[i + 1].toLowerCase())) {
+            // process both word and next word
+            words[i] = processWord(words[i]);
+            words[i + 1] = processWord(words[i + 1]);
+
+            if (words[i].equals(words[i + 1])) {
                 return words[i];
             }
         }
         return null;
+    }
+
+    // processes word - takes off ending special character, and " character from front if it exists.
+    // word to lowercase
+    private static String processWord(String word) {
+        // scrub any ending special characters
+        if (SPECIAL_CHARACTERS.contains(word.charAt(word.length() - 1))) {
+            word = word.substring(0, word.length() - 1);
+        }
+        // check if word starts with special character
+        if(word.startsWith("\"")) {
+            word = word.substring(1);
+        }
+        return  word.toLowerCase();
     }
 }
