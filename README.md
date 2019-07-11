@@ -20,3 +20,4 @@
 15. [Quick Sort](./quicksort)
 16. [Hash Table](./hashtable) -> lab
 17. [Repeated Word](./repeated_word)
+18. [Binary Tree Intersection](./tree_intersection)
