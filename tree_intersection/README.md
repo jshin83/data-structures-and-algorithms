@@ -12,7 +12,7 @@ The duplicate Set is returned with any values that are contained in both trees.
 
 ### Big O
 **Space:** O(N) -> N being the number of elements in the first tree, or second tree (whichever is less).
-The number of duplicates cannot exceed more than the size of one tree.
+The number of duplicates cannot exceed more than the size of one tree, thus the additional data structures (sets) will not hold more than that number.
 
 **Time:** *traversal time* O(N + M) -> N being the number of elements in the first tree, M being the number of elements
 in the second tree. Each element must be looked at once.
