@@ -10,15 +10,6 @@ public class TreeIntersection {
     private static Set<Integer> duplicates;
     private static Set<Integer> seen;
 
-    public static void main(String[] args) {
-        Node node1 = new Node(3, new Node(7), new Node(99));
-        Node node2 = new Node(-77, new Node(100, new Node(99), new Node(0)), new Node(55));
-        Node node3 = new Node(1000, node1, new Node(55));
-
-        System.out.println(findDuplicates(node3, node2));
-        System.out.println(seen);
-    }
-
     /**
      * This method accepts two binary trees
      * and returns a Set of elements that both
