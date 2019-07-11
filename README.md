@@ -21,3 +21,4 @@
 16. [Hash Table](./hashtable) -> lab
 17. [Repeated Word](./repeated_word)
 18. [Binary Tree Intersection](./tree_intersection)
+19. [Left Join](./left_join)
