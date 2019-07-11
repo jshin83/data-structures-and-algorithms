@@ -4,30 +4,49 @@
 package tree_intersection;
 
 import org.junit.Test;
+
+import java.util.*;
+
 import static org.junit.Assert.*;
+import static tree_intersection.TreeIntersection.findDuplicates;
+import static tree_intersection.TreeIntersection.Node;
 
 public class TreeIntersectionTest {
-    TreeIntersection.Node tree1;
-    TreeIntersection.Node tree2;
+    private Node tree1;
+    private Node tree2;
 
-    /*
-        public static void main(String[] args) {
-        Node node1 = new Node(3, new Node(7), new Node(99));
-        Node node2 = new Node(-77, new Node(100, new Node(99), new Node(0)), new Node(55));
-        Node node3 = new Node(1000, node1, new Node(55));
-
-        System.out.println(findDuplicates(node3, node2));
-        System.out.println(seen);
-    }
-     */
     @Test (expected = IllegalArgumentException.class)
-    public void nullInput() {
+    public void bothNullInput() {
+        findDuplicates(tree1, tree2);
+    }
 
+    @Test (expected = IllegalArgumentException.class)
+    public void oneNullInput() {
+        findDuplicates(tree1, tree2);
     }
 
     @Test
-    public void testSomeLibraryMethod() {
-        TreeIntersection classUnderTest = new TreeIntersection();
-        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+    public void noDuplicates() {
+        Node node1 = new Node(3, new Node(7), new Node(-99));
+        tree1 = new Node(-77, new Node(100, new Node(99), new Node(0)), new Node(55));
+        tree2 = new Node(1000, node1, new Node(-55));
+        assertArrayEquals(
+                "Expect no duplicates, result should be empty.",
+                new String[]{},
+                findDuplicates(tree1, tree2).toArray());
+    }
+
+    @Test
+    public void manyDuplicates() {
+        Node node1 = new Node(3, new Node(7), new Node(-99));
+        tree1 = new Node(-77, new Node(100, new Node(-99), new Node(0)), new Node(55));
+        tree2 = new Node(1000, node1, new Node(55));
+
+        Set<Integer> set = new HashSet<>(Arrays.asList(-99, 55));
+
+        assertArrayEquals(
+                "Expect no duplicates in result",
+                set.toArray(),
+                findDuplicates(tree1, tree2).toArray());
     }
 }
