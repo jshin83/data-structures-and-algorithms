@@ -23,4 +23,4 @@ I chose a HashMap as the data structure to return because it has good lookup tim
 
 ## Solution
 <!-- Embedded whiteboard image -->
-![leftjoin](../401-code-challenge/assets/left.jpg)
+![leftjoin](../401-code-challenges/assets/left.jpg)
