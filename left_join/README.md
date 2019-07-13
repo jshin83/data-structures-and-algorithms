@@ -7,6 +7,10 @@ the key and both synonym and antonym (if the key exists in the second hashMap)
 <!-- Description of the challenge -->
 Join the second HashMap value to the first Hashmap key if it exists.
 
+### Stretch goal
+Additional method that takes in third param String joinType, which may be "left" or "right". Case-insensitive, ignores
+spaces before and after.
+
 ## Approach & Efficiency
 <!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
 I iterate through the first HashMap and add its key and value to my result HashMap.
@@ -15,6 +19,11 @@ I iterate through the second Map, and if the key exists in the result Map, I get
 the right Map value in index 1, and update the key - value in the result Map.
 
 I chose a HashMap as the data structure to return because it has good lookup time.
+
+`public static Map<String, String[]> leftJoin(Map<String, String> synonyms, Map<String, String> antonyms)`
+
+
+`public static Map<String, String[]> join(Map<String, String> synonyms, Map<String, String> antonyms, String joinType)`
 
 ### Big O
 **Space:** N <- number of elements in left HashMap

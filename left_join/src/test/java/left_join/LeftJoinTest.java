@@ -9,12 +9,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.*;
-import static left_join.LeftJoin.leftJoin;
+import static left_join.LeftJoin.*;
 
 public class LeftJoinTest {
     Map<String, String> map1;
     Map<String, String> map2;
 
+    // test left join null
     @Test (expected = IllegalArgumentException.class)
     public void nullInput() {
         assertNull(
@@ -25,6 +26,8 @@ public class LeftJoinTest {
                 map2
         );
         leftJoin(map1, map2);
+        join(map1, map2, "right");
+        join(map1, map2, "");
     }
 
     @Test
@@ -45,7 +48,7 @@ public class LeftJoinTest {
         });
 
         assertEquals(
-                "maps1 has three elements",
+                "map1 has three elements",
                 3,
                 map1.size()
         );
@@ -94,9 +97,112 @@ public class LeftJoinTest {
         );
 
         assertArrayEquals(
-                "Result should equal expected Map",
+                "Result keys should equal expected Map keys",
                 result.keySet().toArray(),
                 shouldBeResult.keySet().toArray()
         );
+
+        assertArrayEquals(
+                "Result values should equal expected Map values",
+                result.values().toArray(),
+                shouldBeResult.values().toArray()
+        );
+    }
+
+    /*************************************** join method tests ********************************************/
+
+
+    // test join null maps, null join type input
+    @Test (expected = IllegalArgumentException.class)
+    public void nullJoinInput() {
+        assertNull(
+                "map1 is not declared but not initialized and should be null",
+                map1);
+        assertNull(
+                "map2 is declared but not initialized and should be null",
+                map2
+        );
+        join(map1, map2, "right");
+        join(map1, map2, "");
+    }
+
+    @Test
+    public void treeHas1ValueWithNullRightJoin() {
+        map1 = new HashMap<>();
+        map2 = new HashMap<>();
+
+        map1.put("happy", "elated");
+        map1.put("sad", "depressed");
+        map1.put("soft", "plushy");
+
+        map2.put("thin", "chubby");
+
+        Map<String, String[]> result = join(map1, map2, "RIGHT");
+        // sout that all antonym values are null
+        result.values().forEach((array)-> {
+            System.out.println(array[1]);
+        });
+
+        assertEquals(
+                "map2 has one element",
+                1,
+                map2.size()
+        );
+
+        assertEquals(
+                "map2 and result map should be of same size, 1",
+                map2.size(),
+                result.size()
+        );
+    }
+
+    @Test
+    public void oneDuplicateValueRightJoin() {
+        map1 = new HashMap<>();
+        map2 = new HashMap<>();
+
+        map1.put("happy", "elated");
+        map1.put("sad", "depressed");
+        map1.put("soft", "plushy");
+
+        map2.put("happy", "unhappy");
+        map2.put("soft", "hard");
+        Map<String, String[]> result = join(map1, map2, "   rigHt  ");
+
+        result.forEach( (key, value) -> {
+            System.out.println("key is " + key);
+
+            System.out.println("Values are : " + value[0] + ", " + value[1]);
+        });
+
+        Map<String, String[]> shouldBeResult = new HashMap<>();
+        shouldBeResult.put("happy", new String[]{"unhappy", "elated"});
+        shouldBeResult.put("soft", new String[]{"hard", "plushy"});
+
+        shouldBeResult.forEach( (key, value) -> {
+            System.out.println("key is " + key);
+
+            System.out.println("Values are : " + value[0] + ", " + value[1]);
+        });
+
+        assertEquals(
+                "Size of result should be 2",
+                2,
+                result.size()
+        );
+
+        assertArrayEquals(
+                "Result keys should equal expected Map keys",
+                result.keySet().toArray(),
+                shouldBeResult.keySet().toArray()
+        );
+
+        assertArrayEquals(
+                "Result values should equal expected Map values",
+                result.values().toArray(),
+                shouldBeResult.values().toArray()
+        );
+
+
     }
 }

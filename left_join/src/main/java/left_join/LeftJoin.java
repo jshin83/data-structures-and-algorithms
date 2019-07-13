@@ -7,6 +7,10 @@ import java.util.*;
 
 public class LeftJoin {
 
+    public static void main(String[] args) {
+
+    }
+
     /**
      * Returns left join
      * and if keys do not exist in second tree
@@ -16,26 +20,56 @@ public class LeftJoin {
      * @return Map<String, String[]>, key word, String[] with synonym in index 0, antonym in index 1
      */
     public static Map<String, String[]> leftJoin(Map<String, String> synonyms, Map<String, String> antonyms) {
-        Map<String, String[]> leftJoin = new HashMap<>();
         if(synonyms == null || antonyms == null) {
             throw new IllegalArgumentException("Input maps cannot be null.");
         }
+        return performJoin(synonyms, antonyms);
+    }
+
+
+    /**
+     * Allows user to specify type of join (either "left or "right)
+     * and returns Map with specified join type
+     * @param synonyms Map<String, String>, contains words and synonyms
+     * @param antonyms Map<String, String>, contains words and antonyms
+     * @param joinType String, type of join ("left" or "right") - case insensitve, ignores spaces before and after
+     * @return Map<String, String[]>, key word, String[] with synonym in index 0, antonym in index 1
+     */
+    public static Map<String, String[]> join(Map<String, String> synonyms, Map<String, String> antonyms, String joinType) {
+        if(synonyms == null || antonyms == null || joinType.trim().equals("")) {
+            throw new IllegalArgumentException("Input maps cannot be null.");
+        }
+        // get rid of trailing and preceding spaces, make lowercase
+        joinType = joinType.trim().toLowerCase();
+        if(!(joinType.equals("right") || joinType.equals("left"))) {
+            throw new IllegalArgumentException("Join type must be left or right.");
+        }
+        // ternary statement to evaluate join type
+        // if param joinType is "right", passes in maps accordingly to helper function
+        return joinType.toLowerCase().equals("right") ? performJoin(antonyms, synonyms) :  performJoin(synonyms, antonyms);
+
+    }
+
+    // helper function that goes through maps
+    // returns result map
+    private static Map<String, String[]> performJoin(Map<String, String> map1, Map<String, String> map2) {
+        Map<String, String[]> join = new HashMap<>();
 
         // add all left tree to set
-        synonyms.forEach( (key, value) -> {
-            leftJoin.put(key, new String[]{value, null});
+        map1.forEach( (key, value) -> {
+            join.put(key, new String[]{value, null});
         });
 
         // traverse right tree and see if key exists in result map
         // and update value
-        antonyms.forEach( (key, value) -> {
-            if(leftJoin.containsKey(key)) {
-                String[] values = leftJoin.get(key);
+        map2.forEach( (key, value) -> {
+            if(join.containsKey(key)) {
+                String[] values = join.get(key);
                 values[1] = value;
-                leftJoin.put(key, values);
+                join.put(key, values);
             }
         });
 
-        return leftJoin;
+        return join;
     }
 }
