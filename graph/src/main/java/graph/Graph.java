@@ -3,10 +3,7 @@
  */
 package graph;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Graph<E> {
     private Map<Node, Set<Node>> vertices;
@@ -101,6 +98,14 @@ public class Graph<E> {
             this.data = value;
             edges = new HashSet<>();
         }
+
+        @Override
+        public String toString() {
+            return "Node: " +
+                    "data =" + data +
+                    ", edges =" + edges +
+                    '}';
+        }
     }
 
     /**
@@ -128,5 +133,46 @@ public class Graph<E> {
             return "Edge: " +
                     "weight = " + weight;
         }
+    }
+
+
+    /**
+     * Breadth first traversal.
+     * @param node Node, origin node
+     * @return Set, Nodes
+     */
+    List<Node> bfs(Node node) {
+        // track seen Nodes
+        Set<Node> visited = new HashSet<>();
+
+        // result list to return
+        List<Node> bfs = new ArrayList<>();
+
+        // queue for BFS
+        Queue<Node> queue = new LinkedList<>();
+
+        visited.add(node);
+        queue.add(node);
+        bfs.add(node);
+
+        while (queue.size() != 0)
+        {
+            // dequeue a vertex from queue
+            // if not in visited set, add to result set
+            node = queue.poll();
+
+            if(!visited.contains(node)) {
+                bfs.add(node);
+            }
+            visited.add(node);
+
+            // Get all neighbor vertices of the dequeued Node
+            // if a adjacent has not been visited, then put it in
+            // visited Set and enqueue it
+            vertices.get(node).forEach( neighbor -> {
+                if(!visited.contains(neighbor))  queue.add(neighbor);
+            });
+        }
+        return bfs;
     }
 }

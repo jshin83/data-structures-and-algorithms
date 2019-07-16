@@ -29,3 +29,6 @@ Adds a new node to the graph
 
 `Size()``
 + Returns the total number of nodes in the graph`
+
+`bfs(Node node)`
++ Returns Set of breadth first traversal with origin at input Node
