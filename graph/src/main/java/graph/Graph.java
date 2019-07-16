@@ -141,7 +141,7 @@ public class Graph<E> {
      * @param node Node, origin node
      * @return Set, Nodes
      */
-    List<Node> bfs(Node node) {
+    List<Node> bft(Node node) {
         // track seen Nodes
         Set<Node> visited = new HashSet<>();
 
@@ -150,6 +150,14 @@ public class Graph<E> {
 
         // queue for BFS
         Queue<Node> queue = new LinkedList<>();
+
+        if(node == null) {
+            throw new IllegalArgumentException("Your input is null");
+        }
+
+        if(!vertices.containsKey(node)) {
+            throw new IllegalArgumentException("Your input node is not in the graph");
+        }
 
         visited.add(node);
         queue.add(node);

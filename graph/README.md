@@ -30,5 +30,26 @@ Adds a new node to the graph
 `Size()``
 + Returns the total number of nodes in the graph`
 
-`bfs(Node node)`
+
+## Challenge Summary
+<!-- Short summary or background information -->
+Breadth first traversal on graph with input Node as origin
+
+### Challenge Description
+<!-- Description of the challenge -->
+Use Visited Set to manage visited vertices, Queue for breadth first traversal
+
+### Approach & Efficiency
+<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+Queue to manage Nodes to visit, Seen Set so duplicate Nodes are not visited
+
+#### Big O
+Time: O(V + E) -> Need to look at every Node and all the neighbors (edges)
+Space: O(V) -> Queue could hold all the Vertices
+
+## Solution
+<!-- Embedded whiteboard image -->
+`bft(Node node)`
 + Returns Set of breadth first traversal with origin at input Node
+
+![graph bst](../401-code-challenges/assets/graphbst.jpg)

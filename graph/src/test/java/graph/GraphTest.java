@@ -90,7 +90,7 @@ public class GraphTest {
     }
 
     @Test
-    public void bfs() {
+    public void bft() {
         init();
 
         Node node1 = testGraph.addNode(3);
@@ -107,7 +107,7 @@ public class GraphTest {
         testGraph.addEdge(node3, node5, 99);
         testGraph.addEdge(node1, node4, 16);
 
-        List<Node> bfs = testGraph.bfs(node2);
+        List<Node> bfs = testGraph.bft(node2);
 
         assertTrue(
                 "Node2 should have node1 as a neighbor",
@@ -136,5 +136,12 @@ public class GraphTest {
                 resultShouldBe,
                 bfs.toString().trim()
         );
+    }
+
+    @Test (expected =  IllegalArgumentException.class)
+    public void nullNodeBft() {
+        init();
+        Node node1 = null;
+        testGraph.bft(node1);
     }
 }
