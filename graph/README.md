@@ -53,3 +53,27 @@ Space: O(V) -> Queue could hold all the Vertices
 + Returns Set of breadth first traversal with origin at input Node
 
 ![graph bst](../401-code-challenges/assets/graphbst.jpg)
+
+## Challenge Summary
+<!-- Short summary or background information -->
+Get Edges
+
+### Challenge Description
+<!-- Description of the challenge -->
+Given an input of City arrays and a graph, it returns true with the cost if a direct flight
+is possible. False with cost of 0 is returned if a direct path is possible.
+
+### Approach & Efficiency
+<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+Queue to manage Nodes to visit, Seen Set so duplicate Nodes are not visited
+
+#### Big O
+Time: O(V + E) -> Need to look at every Node and all the neighbors (edges)
+Space: O(V) -> Queue could hold all the Vertices
+
+## Solution
+<!-- Embedded whiteboard image -->
+`bft(Node node)`
++ Returns Set of breadth first traversal with origin at input Node
+
+![graph bst](../401-code-challenges/assets/graphbst.jpg)

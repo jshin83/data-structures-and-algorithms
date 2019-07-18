@@ -24,7 +24,7 @@ public class Graph<E> {
     public Node addNode(E value) {
         Node newNode;
         if(value != null) {
-            newNode = new Node(value);
+            newNode = new Node<>(value);
             vertices.putIfAbsent(newNode, new HashSet<>());
             return newNode;
         }
@@ -40,7 +40,7 @@ public class Graph<E> {
     public void addEdge(Node to, Node from, int weight) {
 
         if(vertices.containsKey(to) && vertices.containsKey(from)) {
-            Edge edge = new Edge(to, from, weight);
+            Edge edge = new Edge<>(to, from, weight);
 
             // add to Set / adjacency list
             // update Node Set of edges
@@ -88,55 +88,6 @@ public class Graph<E> {
     }
 
     /**
-     * Inner Node class
-     */
-    class Node {
-        E data;
-        Set<Edge> edges;
-
-        Node(E value) {
-            this.data = value;
-            edges = new HashSet<>();
-        }
-
-        @Override
-        public String toString() {
-            return "Node: " +
-                    "data =" + data +
-                    ", edges =" + edges +
-                    '}';
-        }
-    }
-
-    /**
-     * Inner Edge class
-     */
-    class Edge {
-        int weight;
-        Node to;
-        Node from;
-
-        /**
-         * Constructor
-         * @param to Node, destination Node
-         * @param from Node, source Node
-         * @param weight int, weight
-         */
-        public Edge(Node to, Node from, int weight) {
-            this.to = to;
-            this.from = from;
-            this.weight = weight;
-        }
-
-        @Override
-        public String toString() {
-            return "Edge: " +
-                    "weight = " + weight;
-        }
-    }
-
-
-    /**
      * Breadth first traversal.
      * @param node Node, origin node
      * @return Set, Nodes
@@ -182,5 +133,47 @@ public class Graph<E> {
             });
         }
         return bfs;
+    }
+
+
+    public static String get_edge(Node[] cities, Graph graph) {
+        int sumWeight = 0;
+        String bool = "False, $";
+
+        if(cities == null || graph == null) {
+            throw new IllegalArgumentException("Input cannot be null");
+        }
+        if(cities.length == 1) {
+            return bool + sumWeight;
+        }
+
+        Set graphCities = graph.getNodes();
+
+        for(int i = 0; i < cities.length - 1; i++) {
+            int weight = 0;
+
+            if(!graphCities.contains(cities[i])) {
+                throw new IllegalArgumentException(cities[i].data + " in your input array does not exist in the graph");
+            } else {
+                Set neighbors = graph.getNeighbors(cities[i]);
+                if(!neighbors.contains(cities[i + 1])) {
+                    return bool + "0";
+                } /*else if (i == cities.length - 1 && neighbors.contains(cities[i + 1])) {
+
+                }*/ else {
+                    Set<Edge> toEdges = cities[i].edges;
+                    for(Edge edge : toEdges) {
+                        if (cities[i].edges.contains(edge) &&
+                                (edge.to.equals(cities[i]) && edge.from.equals(cities[i + 1])) ||
+                                (edge.to.equals(cities[i + 1]) && edge.from.equals(cities[i]))) {
+                            weight = edge.getWeight();
+                        }
+                    }
+                    sumWeight += weight;
+                }
+            }
+        }
+
+        return "True, $" + sumWeight;
     }
 }
