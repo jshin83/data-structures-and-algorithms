@@ -125,11 +125,7 @@ public class GraphTest {
                 bfs.size()
         );
 
-        String resultShouldBe = "[Node: data =13, edges =[Edge: weight = 90, Edge: weight = 30]}, " +
-                "Node: data =7, edges =[Edge: weight = 99, Edge: weight = 30, Edge: weight = 11]}, " +
-                "Node: data =3, edges =[Edge: weight = 16, Edge: weight = 90]}, " +
-                "Node: data =15, edges =[Edge: weight = 111, Edge: weight = 99]}, " +
-                "Node: data =5, edges =[Edge: weight = 16, Edge: weight = 111, Edge: weight = 11]}]";
+        String resultShouldBe = "[13, 3, 7, 5, 15]";
 
         assertEquals(
                 "Node2 traversal should match string.",
@@ -144,4 +140,129 @@ public class GraphTest {
         Node node1 = null;
         testGraph.bft(node1);
     }
+
+
+    /******************** city graph test ***********************************/
+
+    private Graph<String> testGraph2;
+
+    @Test
+    public void init2() {
+        testGraph2 = new Graph<>();
+
+    }
+
+    @Test
+    public void emptyGraph2() {
+        assertNull("Declared but not instantiated graph should be null", testGraph2);
+
+        init2();
+
+        assertEquals("instantiated graph should have size of 0", 0, testGraph2.size());
+    }
+
+    @Test
+    public void addNodeNoNeighbors2() {
+        init2();
+
+        Node metroville = testGraph2.addNode("Metroville");
+        testGraph2.addNode("Pandora");
+        testGraph2.getNodes().forEach( vertex -> {
+            System.out.println(vertex.data);
+            System.out.println(testGraph2.getNeighbors(vertex));
+        });
+
+        assertEquals("size should be 2", 2, testGraph2.size());
+
+        assertEquals("Get neighbors should return []", new HashSet(), testGraph2.getNeighbors(metroville));
+    }
+
+
+    @Test
+    public void getEdgeStaticMethod() {
+        init2();
+
+        Node metroville = testGraph2.addNode("Metroville");
+        Node pandora = testGraph2.addNode("Pandora");
+        Node arendelle = testGraph2.addNode("Arendelle");
+        Node monstropolis = testGraph2.addNode("Monstropolis");
+        Node naboo = testGraph2.addNode("Naboo");
+        Node narnia = testGraph2.addNode("Narnia");
+
+        testGraph2.addEdge(metroville, pandora, 82);
+        testGraph2.addEdge(pandora, arendelle, 150);
+        testGraph2.addEdge(arendelle, monstropolis, 42);
+        testGraph2.addEdge(metroville, arendelle, 99);
+        testGraph2.addEdge(metroville, narnia, 37);
+        testGraph2.addEdge(narnia, naboo, 250);
+        testGraph2.addEdge(metroville, monstropolis, 105);
+        testGraph2.addEdge(metroville, naboo, 26);
+        testGraph2.addEdge(monstropolis, naboo, 73);
+
+        System.out.println(metroville.edges);
+        System.out.println(pandora.edges);
+
+
+        assertTrue(
+                "metroville should have node2 as the only neighbor",
+                testGraph2.getNeighbors(metroville).contains(pandora)
+        );
+
+        assertEquals(
+                "metroville neighbors list should have size of 5",
+                5,
+                testGraph2.getNeighbors(metroville).size()
+        );
+
+        assertTrue(
+                "pandora should have metroville as a neighbor",
+                testGraph2.getNeighbors(pandora).contains(metroville)
+        );
+
+        assertEquals(
+                "pandora neighbors list should have size of 2",
+                2,
+                testGraph2.getNeighbors(pandora).size()
+        );
+
+        assertEquals(
+                "metroville should contain five edges",
+                5,
+                metroville.edges.size()
+        );
+
+        assertEquals(
+                "pandora edge should contain two edges with weights of 150 and 82",
+                2,
+                pandora.edges.size()
+        );
+
+
+        // HAPPY PATH
+        assertEquals(
+                "[Metroville, Pandora] should equal True, $82",
+                "True, $82",
+                Graph.get_edge(new Node[]{metroville, pandora}, testGraph2)
+        );
+
+        assertEquals(
+                "[Arendelle, Monstropolis, Naboo] should equal True, $115",
+                "True, $115",
+                Graph.get_edge(new Node[]{arendelle, monstropolis, naboo}, testGraph2)
+        );
+
+        // SAD PATH
+        assertEquals(
+                "[Naboo, Pandora] should equal False, $0",
+                "False, $0",
+                Graph.get_edge(new Node[]{naboo, pandora}, testGraph2)
+        );
+
+        assertEquals(
+                "[Narnia, Arendelle, Naboo] should equal False, $0",
+                "False, $0",
+                Graph.get_edge(new Node[]{narnia, arendelle, naboo}, testGraph2)
+        );
+    }
+
 }
