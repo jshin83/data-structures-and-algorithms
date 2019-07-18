@@ -22,14 +22,19 @@ Adds a new node to the graph
 `GetNodes()`
 + Returns all of the nodes in the graph as a collection (set, list, or similar)
 
-`GetNeighbors()``
+`GetNeighbors()`
 + Returns a collection of nodes connected to the given node
 + Takes in a given node
 + Include the weight of the connection in the returned collection
 
-`Size()``
+`Size()`
 + Returns the total number of nodes in the graph`
 
+`GetEdge(Node[] cities, Graph graph)`
++ Returns boolean and cost if direct flight is possible
+
+`dft(Node origin)`
++ Returns list of depth first traversal
 
 ## Challenge Summary
 <!-- Short summary or background information -->

@@ -241,26 +241,26 @@ public class GraphTest {
         assertEquals(
                 "[Metroville, Pandora] should equal True, $82",
                 "True, $82",
-                Graph.get_edge(new Node[]{metroville, pandora}, testGraph2)
+                Graph.getEdge(new Node[]{metroville, pandora}, testGraph2)
         );
 
         assertEquals(
                 "[Arendelle, Monstropolis, Naboo] should equal True, $115",
                 "True, $115",
-                Graph.get_edge(new Node[]{arendelle, monstropolis, naboo}, testGraph2)
+                Graph.getEdge(new Node[]{arendelle, monstropolis, naboo}, testGraph2)
         );
 
         // SAD PATH
         assertEquals(
                 "[Naboo, Pandora] should equal False, $0",
                 "False, $0",
-                Graph.get_edge(new Node[]{naboo, pandora}, testGraph2)
+                Graph.getEdge(new Node[]{naboo, pandora}, testGraph2)
         );
 
         assertEquals(
                 "[Narnia, Arendelle, Naboo] should equal False, $0",
                 "False, $0",
-                Graph.get_edge(new Node[]{narnia, arendelle, naboo}, testGraph2)
+                Graph.getEdge(new Node[]{narnia, arendelle, naboo}, testGraph2)
         );
     }
 

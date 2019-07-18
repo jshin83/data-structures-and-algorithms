@@ -143,7 +143,7 @@ public class Graph<E> {
      * @param graph Graph
      * @return String, true with sum of weights or false $0
      */
-    public static String get_edge(Node[] cities, Graph graph) {
+    public static String getEdge(Node[] cities, Graph graph) {
         int sumWeight = 0;
         String bool = "False, $";
 
@@ -181,6 +181,12 @@ public class Graph<E> {
         return "True, $" + sumWeight;
     }
 
+
+    /**
+     * Depth first traversal
+     * @param node Node, origin
+     * @return List<Node>
+     */
     List<Node> dft(Node node) {
         // track seen Nodes
         Set<Node> visited = new HashSet<>();
