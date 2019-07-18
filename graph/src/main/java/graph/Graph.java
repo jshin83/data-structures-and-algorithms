@@ -180,4 +180,47 @@ public class Graph<E> {
 
         return "True, $" + sumWeight;
     }
+
+    List<Node> dft(Node node) {
+        // track seen Nodes
+        Set<Node> visited = new HashSet<>();
+
+        // result list to return
+        List<Node> bfs = new ArrayList<>();
+
+        // stack for DFS
+        Stack<Node> stack = new Stack<>();
+
+        if(node == null) {
+            throw new IllegalArgumentException("Your input is null");
+        }
+
+        if(!vertices.containsKey(node)) {
+            throw new IllegalArgumentException("Your input node is not in the graph");
+        }
+
+        visited.add(node);
+        stack.add(node);
+        bfs.add(node);
+
+        while (stack.size() != 0)
+        {
+            // dequeue a vertex from queue
+            // if not in visited set, add to result set
+            node = stack.pop();
+
+            if(!visited.contains(node)) {
+                bfs.add(node);
+            }
+            visited.add(node);
+
+            // Get all neighbor vertices of the dequeued Node
+            // if a adjacent has not been visited, then put it in
+            // visited Set and enqueue it
+            vertices.get(node).forEach( neighbor -> {
+                if(!visited.contains(neighbor))  stack.add(neighbor);
+            });
+        }
+        return bfs;
+    }
 }

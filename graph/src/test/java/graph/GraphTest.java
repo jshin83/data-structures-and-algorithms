@@ -5,7 +5,6 @@ package graph;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import graph.Graph.*;
 
 import java.util.HashSet;
 import java.util.List;
@@ -262,6 +261,56 @@ public class GraphTest {
                 "[Narnia, Arendelle, Naboo] should equal False, $0",
                 "False, $0",
                 Graph.get_edge(new Node[]{narnia, arendelle, naboo}, testGraph2)
+        );
+    }
+
+    /******************************* dft **********************************/
+
+    @Test
+    public void dft() {
+        init();
+
+        Node node1 = testGraph.addNode(3);
+        Node node2 = testGraph.addNode(13);
+        Node node3 = testGraph.addNode(7);
+        Node node4 = testGraph.addNode(5);
+        Node node5 = testGraph.addNode(15);
+        Node node6 = testGraph.addNode(45);
+        Node node7 = testGraph.addNode(65);
+
+        testGraph.addEdge(node1, node2, 90);
+        testGraph.addEdge(node4, node3, 11);
+        testGraph.addEdge(node2, node3, 30);
+        testGraph.addEdge(node4, node5, 111);
+        testGraph.addEdge(node4, node5, 99);
+        testGraph.addEdge(node1, node4, 16);
+        testGraph.addEdge(node5, node6, 99);
+        testGraph.addEdge(node4,  node7, 100);
+
+        List<Node> bfs = testGraph.dft(node2);
+
+        assertTrue(
+                "Node2 should have node1 as a neighbor",
+                testGraph.getNeighbors(node2).contains(node1)
+        );
+
+        assertTrue(
+                "Node2 should have node1 as a neighbor",
+                testGraph.getNeighbors(node2).contains(node3)
+        );
+
+        assertEquals(
+                "Size of result should be same as number of nodes",
+                7,
+                bfs.size()
+        );
+
+        String resultShouldBe = "[13, 3, 5, 7, 15, 45, 65]";
+
+        assertEquals(
+                "Node2 traversal should match string.",
+                resultShouldBe,
+                bfs.toString().trim()
         );
     }
 
