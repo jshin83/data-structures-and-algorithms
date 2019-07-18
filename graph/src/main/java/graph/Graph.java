@@ -135,7 +135,14 @@ public class Graph<E> {
         return bfs;
     }
 
-
+    /**
+     * Static method that returns boolean and cost
+     * if direct path is possible for cities contained in input array
+     * and graph input
+     * @param cities Node[]
+     * @param graph Graph
+     * @return String, true with sum of weights or false $0
+     */
     public static String get_edge(Node[] cities, Graph graph) {
         int sumWeight = 0;
         String bool = "False, $";
@@ -155,12 +162,9 @@ public class Graph<E> {
             if(!graphCities.contains(cities[i])) {
                 throw new IllegalArgumentException(cities[i].data + " in your input array does not exist in the graph");
             } else {
-                Set neighbors = graph.getNeighbors(cities[i]);
-                if(!neighbors.contains(cities[i + 1])) {
+                if(!graph.getNeighbors(cities[i]).contains(cities[i + 1])) {
                     return bool + "0";
-                } /*else if (i == cities.length - 1 && neighbors.contains(cities[i + 1])) {
-
-                }*/ else {
+                } else {
                     Set<Edge> toEdges = cities[i].edges;
                     for(Edge edge : toEdges) {
                         if (cities[i].edges.contains(edge) &&

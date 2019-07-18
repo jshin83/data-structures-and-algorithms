@@ -65,15 +65,15 @@ is possible. False with cost of 0 is returned if a direct path is possible.
 
 ### Approach & Efficiency
 <!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
-Queue to manage Nodes to visit, Seen Set so duplicate Nodes are not visited
+Iterate through array, see if element at next is included in neighbors list, check edge list and get weight.
 
 #### Big O
 Time: O(V + E) -> Need to look at every Node and all the neighbors (edges)
-Space: O(V) -> Queue could hold all the Vertices
+Space: O(V + E)
 
 ## Solution
 <!-- Embedded whiteboard image -->
-`bft(Node node)`
-+ Returns Set of breadth first traversal with origin at input Node
+`getEdge(Node[] array, Graph graph)`
++ Returns True or False with cost
 
-![graph bst](../401-code-challenges/assets/graphbst.jpg)
+![graph bst](../401-code-challenges/assets/getEdge.jpg)
